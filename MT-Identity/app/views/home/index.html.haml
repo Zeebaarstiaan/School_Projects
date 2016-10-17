@@ -1,0 +1,176 @@
+#overlay_modal.reveal-modal.full-modal
+  #overlay_content.clearfix
+#group_overlay_modal.reveal-modal.full-modal
+  #group_overlay_content.clearfix
+.full_width_blue
+  .row
+    .large-12.columns
+      %p
+        Mediatechnologie is de perfecte mix tussen media en informatica. Op deze website kom je erachter wat de vierjarige opleiding allemaal inhoudt: van vakken tot projecten, van stage tot afstuderen. Bekijk een paar toffe projecten van onze Mediatechnologen, of scroll verder en bekijk de timeline.
+      .gridster
+        %ul
+          - unless @active_projects[0].nil?
+            %li.project{data: {row:"2", col:"1", sizex:"1", sizey:"1"}}
+              =link_to @active_projects[0].title, "##{@active_projects[0].id}", class:"read-more"
+              =image_tag(@active_projects[0].preview.small_project.url)
+          - unless @active_projects[1].nil?
+            %li.project{data: {row:"2", col:"2", sizex:"1", sizey:"1"}}
+              =link_to @active_projects[1].title, "##{@active_projects[1].id}", class:"read-more"
+              =image_tag(@active_projects[1].preview.small_project.url)
+          - unless @active_projects[2].nil?
+            %li.project{data: {row:"3", col:"1", sizex:"1", sizey:"1"}}
+              =link_to @active_projects[2].title, "##{@active_projects[2].id}", class:"read-more"
+              =image_tag(@active_projects[2].preview.small_project.url)
+          - unless @active_projects[3].nil?
+            %li.project{data: {row:"4", col:"4", sizex:"1", sizey:"1"}}
+              =link_to @active_projects[3].title, "##{@active_projects[3].id}", class:"read-more"
+              =image_tag(@active_projects[3].preview.small_project.url)
+
+
+          - unless @active_projects[4].nil?
+            %li.project-square{data: {row:"6", col:"5", sizex:"2", sizey:"2"}}
+              =link_to @active_projects[4].title, "##{@active_projects[4].id}", class:"read-more"
+              =image_tag(@active_projects[4].preview.large_project.url)
+
+          - unless @active_projects[5].nil?
+            %li.project-square{data: {row:"6", col:"5", sizex:"2", sizey:"2"}}
+              =link_to @active_projects[5].title, "##{@active_projects[5].id}", class:"read-more"
+              =image_tag(@active_projects[5].preview.large_project.url)
+
+          - unless @active_projects[6].nil?
+            %li.project-horizontal-square{data: {row:"1", col:"1", sizex:"2", sizey:"1"}}
+              =link_to @active_projects[6].title, "##{@active_projects[6].id}", class:"read-more"
+              =image_tag(@active_projects[6].preview.horizontal_project.url)
+
+          - unless @active_projects[7].nil?
+            %li.project-horizontal-square{data: {row:"2", col:"1", sizex:"2", sizey:"1"}}
+              =link_to @active_projects[7].title, "##{@active_projects[7].id}", class:"read-more"
+              =image_tag(@active_projects[7].preview.horizontal_project.url)
+          - unless @active_projects[8].nil?
+            %li.project-horizontal-square{data: {row:"3", col:"2", sizex:"2", sizey:"1"}}
+              =link_to @active_projects[8].title, "##{@active_projects[8].id}", class:"read-more"
+              =image_tag(@active_projects[8].preview.horizontal_project.url)
+
+.row
+  .large-12.columns.timeline-intro
+    %h2.header
+      Timeline
+    %p
+      In deze timeline vind je niet alleen de beste projecten, maar kom je er ook achter welke evenementen er worden gehouden tijdens de opleiding. Laat je inspireren door onze studenten uit elk jaar!
+
+.row
+  .large-12.columns
+    - @college_years.each do |college_year|
+      .timeline-info
+        .year
+          =link_to college_year.years, college_year_path(college_year)
+
+      .timeline#container
+        - college_year.projects.each do |project|
+          .project.box{id: project.id}
+            .header
+              =project.school_year_display
+            %h2=project.title
+            .box-description
+              %p=project.description
+
+            .read-more
+              =image_tag project.preview.banner.url
+              =link_to "Meer lezen", project_path(project, :college_year_id => college_year), :remote => true
+
+        #infscr-loading{:style => "display: none;"}
+          %img{:alt => "Loading...", :src => "http://i.imgur.com/6RMhx.gif", :style => "display: none;"}/
+          %div{:style => "opacity: 1;"} No more pages to load.
+
+
+:javascript
+  $(document).ready(function(){
+    $(".gridster ul").gridster({
+          widget_margins: [10, 10],
+          widget_base_dimensions: [140, 140]
+    });
+
+    $(".gridster ul").gridster().data('gridster').disable();
+
+    $('.gridster ul li').hover(
+          // Over
+          function(){
+              var $ih = $(this);
+              $ih.find('.read-more').stop(true,true).animate({opacity:1}, 400);
+          },
+          // Out
+          function(){
+              var $ih = $(this);
+              $ih.find('.read-more').stop(true,true).animate({opacity:0}, 400);
+          }
+      ).find('.read-more').css('opacity',0);
+  });
+
+  $(window).load(function(){
+    function Arrow_Points(){
+      var s = $('.timeline').find('.project');
+      $.each(s,function(i,obj){
+        var posLeft = $(obj).css("left");
+        if(posLeft == "0px"){
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-left");
+        }else{
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-right");
+        }
+      });
+    }
+
+    $('.timeline').masonry({
+      // options
+      itemSelector : '.project',
+      columnWidth: 425,
+      isAnimated: true,
+      gutterWidth: 65,
+      animationOptions: {
+        duration: 400,
+        easing: 'linear',
+        queue: true,
+        done: function(){
+          Arrow_Points();
+        }
+      }
+    });
+    $('.timeline').masonry('reload');
+
+    $(function(){
+      var $container = $('#container');
+      $container.imagesLoaded(function(){
+        $container.masonry({
+          itemSelector: '.box',
+          columnWidth: 100
+        });
+      });
+
+      $container.infinitescroll({
+        navSelector  : '#page-nav',    // selector for the paged navigation
+        nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+        itemSelector : '.box',     // selector for all items you'll retrieve
+        loading: {
+            finishedMsg: 'No more pages to load.',
+            img: 'http://i.imgur.com/6RMhx.gif'
+          }
+        },
+        // trigger Masonry as a callback
+        function( newElements ) {
+          // hide new items while they are loading
+          var $newElems = $( newElements ).css({ opacity: 0 });
+          // ensure that images load before adding to masonry layout
+          $newElems.imagesLoaded(function(){
+            // show elems now they're ready
+            $newElems.animate({ opacity: 1 });
+            $container.masonry( 'appended', $newElems, true );
+          });
+        }
+      );
+    });
+
+    Arrow_Points();
+  });
+  if ($(".debug").length > 0){
+    console.log("debug main")
+    $(".box-description").dotdotdot();
+  }

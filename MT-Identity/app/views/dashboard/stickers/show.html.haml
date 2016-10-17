@@ -1,0 +1,21 @@
+.row
+  .large-12.columns
+    %p#notice= notice
+
+    %p
+      %b Title:
+      = @sticker.title
+    %p
+      %b Description:
+      = @sticker.description
+    %p
+      %b Link:
+      =image_tag(qr_code(250, @sticker.link))
+
+    %p
+      %b Project:
+      =link_to @sticker.project.title, dashboard_project_path(@sticker.project)
+
+    = link_to 'Bewerk', edit_dashboard_project_sticker_path(@sticker.project, @sticker)
+    \|
+    = link_to 'Terug', dashboard_project_stickers_path(@sticker.project)

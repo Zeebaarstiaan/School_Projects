@@ -1,0 +1,15 @@
+.morris-hover {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+}
+
+.stress {
+    background-color: #ffcccc;
+}
+
+.sleep {
+    background-color: #ccccff;
+}

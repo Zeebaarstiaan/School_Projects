@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Item Titles
+    <string-array name="menu_titles">
+        <item>Home</item>
+        <item>Over Goochem</item>
+        <item>Profiel</item>
+    </string-array>
+
+    // Item Icons
+    <string-array name="menu_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </string-array>
+
+</resources>

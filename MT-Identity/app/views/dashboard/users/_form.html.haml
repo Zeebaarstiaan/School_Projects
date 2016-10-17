@@ -1,0 +1,62 @@
+= simple_form_for [:dashboard, @user] do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .field_first_name
+    =f.label "Voornaam"
+    =f.text_field :first_name, :required => true
+  .field_last_name
+    =f.label "Achternaam"
+    =f.text_field :last_name, :required => true
+  .field_description.clearFix
+    =f.label "Beschrijving"
+    =f.text_area :description, :required => false
+  .field_studentnumber
+    =f.label "Studentnummer"
+    =f.text_field :student_number, :required => true
+  .field_starting_year
+    =f.input :starting_year, required: true, label: 'Beginjaar', as: :date, start_year: Date.today.year - 5, end_year: Date.today.year + 3, discard_day: true, discard_month: true,  order: [:year], prompt: "Selecteer een beginjaar"
+  .field_email
+    =f.label "E-mail"
+    =f.email_field :email, :required => true, id: "user_email_field"
+  .field_portfolio.clearFix
+    =f.label "Portfolio"
+  .row.collapse
+    .small-3.large-2.columns
+      %span.prefix http://
+    .small-9.large-10.columns
+      =f.text_field :portfolio, :required => false
+  -if params[:action] == "new"
+    .row
+      .large-6.columns
+        =f.input :password, label: "Wachtwoord"
+      .large-6.columns
+        =f.input :password_confirmation, label: "Wachtwoord bevestigen"
+  .field_picture
+    =f.label "Foto"
+    %p.upload-avatar Upload een spontane, representatieve foto hoe jij in het dagelijks leven bent!
+    - if @user.avatar?
+      =image_tag @user.avatar.profile.url
+      %br
+      %label
+        = f.check_box :remove_avatar
+        Verwijder foto
+    =f.file_field :avatar
+  .row
+    .large-12.columns
+      %hr/
+      =f.input :admin
+      %hr/
+
+  .actions
+    = f.submit 'Opslaan', class: "button"
+    =link_to "Annuleren", :back, class: "button secondary"
+
+:javascript
+  $("#user_student_number").numeric();
+  $("#user_student_number").keyup(function(){
+    $("#user_email_field").val(this.value + "@hr.nl");
+  });

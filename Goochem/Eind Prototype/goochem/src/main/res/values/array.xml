@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    // Item Titles
+    <string-array name="menu_titles">
+        <item>Home</item>
+        <item>Over Goochem</item>
+        <item>Instellingen</item>
+        <item>Log uit</item>
+    </string-array>
+    // Item Icons
+    <string-array name="menu_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </string-array>
+
+    // Location Settings
+    <string-array name="location_modes">
+        <item>Netwerk</item>
+        <item>GPS</item>
+        <item>Automatisch</item>
+    </string-array>
+    // Location Values
+    <string-array name="location_values">
+        <item>network</item>
+        <item>gps</item>
+        <item>auto</item>
+    </string-array>
+
+    // Update interval
+    <string-array name="interval_modes">
+        <item>@string/seconds_10</item>
+        <item>@string/seconds_30</item>
+        <item>@string/minutes_1</item>
+        <item>@string/minutes_2</item>
+        <item>@string/minutes_5</item>
+    </string-array>
+    // Update values
+    <string-array name="interval_values">
+        <item>10000</item>
+        <item>30000</item>
+        <item>60000</item>
+        <item>120000</item>
+        <item>300000</item>
+    </string-array>
+
+    //Proximity radius
+    <string-array name="radius_modes">
+        <item>@string/meters_200</item>
+        <item>@string/meters_500</item>
+        <item>@string/meters_800</item>
+        <item>@string/meters_1000</item>
+        <item>@string/meters_1500</item>
+        <item>@string/meters_150000</item>
+    </string-array>
+    //Proximity values
+    <string-array name="radius_values">
+        <item>200</item>
+        <item>500</item>
+        <item>800</item>
+        <item>1000</item>
+        <item>1500</item>
+        <item>150000</item>
+    </string-array>
+
+    <string name="seconds_5">5 seconden</string>
+    <string name="seconds_10">10 seconden</string>
+    <string name="seconds_30">30 seconden</string>
+    <string name="minutes_1">1 minuut</string>
+    <string name="minutes_2">2 minuten</string>
+    <string name="minutes_5">5 minuten</string>
+    <string name="meters_200">200m</string>
+    <string name="meters_500">500m</string>
+    <string name="meters_800">800m</string>
+    <string name="meters_1000">1km</string>
+    <string name="meters_1500">1.5km</string>
+    <string name="meters_150000">DEBUG 150km</string>
+</resources>

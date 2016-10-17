@@ -1,0 +1,28 @@
+.row
+  .large-12.columns
+    %h2 #{@college_year.years} / #{@project.title}
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li=link_to @college_year.years, dashboard_college_year_path(@college_year)
+      %li=link_to "Projecten", dashboard_college_year_projects_path(@college_year)
+      %li.current=link_to @project.title, dashboard_college_year_project_path(@college_year, @project)
+
+.row
+  .large-12.columns
+    %p
+      %b Titel:
+      = @project.title
+    %p
+      %b Beschrijving:
+      = @project.description
+    =image_tag @project.preview.banner.url
+    %br
+
+    = link_to 'Bewerken', edit_dashboard_project_path(@project)
+    \|
+    = link_to 'Terug', dashboard_project_path(@project)

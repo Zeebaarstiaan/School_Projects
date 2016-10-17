@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Goochem</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="slogan">Voor de slimmer Rotterdammert!</string>
+    <string name="info_title">Wat is Goochem?</string>
+    <string name="info_1">\"Goochem geeft je inzicht over wat er \'hier en nu\' gebeurt.\"</string>
+    <string name="info_2">Je krijgt die informatie van mensen (die Goochem ook gebruiken) in je nabije omgeving.</string>
+    <string name="info_3">Als je ergens bent waar iets aan de hand is maar je weet niet precies wat, kun je het mondeling rondvragen aan mensen die er zijn.</string>
+    <string name="info_4">Met Goochem kun je het nu rondvragen aan mensen in een straal van 250 meter om je heen.</string>
+    <string name="info_5">Zo weet je altijd waarom je bijvoorbeeld in de file staat, waarom de tram stilstaat en of anderen ook zo\'n verdachte gaslucht ruiken.</string>
+    <string name="more_info">Swipe voor meer informatie</string>
+    <string name="share">Deel Goochem</string>
+    <string name="share_message">"\nBekijk deze applicatie:\n\n"</string>
+    <string name="share_link">"https://play.google.com/store/apps/details?id=nl.rotterdamcs.goochem \n\n"</string>
+    <string name="pick_one">Deel met:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string><string name="intro_string">Welkom bij Goochem, de
+applicatie die jou hier nu inzicht
+geeft in je omgeving.</string>
+    <string name="intro_button">Start Goochem</string>
+    <string name="login_disclaimer">Goochem gebruikt voorlopig alleen nog Facebook-login. Makkelijk voor jou, makkelijk voor Goochem.</string>
+    <string name="app_id">691876874206119</string>
+
+</resources>

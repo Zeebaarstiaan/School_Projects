@@ -1,0 +1,15 @@
+.row
+  .large-12.columns
+    %h2 Nieuw team
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Teams", dashboard_groups_path
+      %li.current=link_to "Nieuw team", new_dashboard_group_path
+
+.row
+  .large-12.columns
+    = render 'form'

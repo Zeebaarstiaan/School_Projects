@@ -1,0 +1,15 @@
+.row
+  .large-12.columns
+    %h2 Nieuwe opdrachtgever aanmaken
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Opdrachtgevers", dashboard_clients_path
+      %li.current=link_to "Nieuwe opdrachtgever", new_dashboard_client_path
+.row
+  .large-12.columns
+    = render 'form'
+
+    = link_to 'Terug naar het overzicht', dashboard_clients_path

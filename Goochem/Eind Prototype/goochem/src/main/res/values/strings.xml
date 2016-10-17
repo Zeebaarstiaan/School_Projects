@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Goochem</string>
+    <string name="fragment_dashboard">Home</string>
+    <string name="fragment_about">Over Goochem</string>
+    <string name="fragment_settings">Instellingen</string>
+
+
+    <string name="slogan">Voor de slimmer Rotterdammert!</string>
+    <string name="info_title">Wat is Goochem?</string>
+    <string name="info_1">\"Goochem geeft je inzicht over wat er \'hier en nu\' gebeurt.\"</string>
+    <string name="info_2">Je krijgt die informatie van mensen (die Goochem ook gebruiken) in je nabije omgeving.</string>
+    <string name="info_3">Als je ergens bent waar iets aan de hand is maar je weet niet precies wat, kun je het mondeling rondvragen aan mensen die er zijn.</string>
+    <string name="info_4">Met Goochem kun je het nu rondvragen aan mensen in een straal van 250 meter om je heen.</string>
+    <string name="info_5">Zo weet je altijd waarom je bijvoorbeeld in de file staat, waarom de tram stilstaat en of anderen ook zo\'n verdachte gaslucht ruiken.</string>
+    <string name="more_info">Swipe voor meer informatie</string>
+    <string name="share">Deel Goochem</string>
+    <string name="share_message">"\nBekijk deze applicatie:\n\n"</string>
+    <string name="share_link">"https://play.google.com/store/apps/details?id=nl.rotterdamcs.goochem \n\n"</string>
+    <string name="pick_one">Deel met:</string>
+    <string name="intro_string">Welkom bij Goochem!\nLog-in of registreer om te beginnen.</string>
+    <string name="intro_button">Log In</string>
+    <string name="login_disclaimer">Goochem gebruikt voorlopig alleen nog Facebook-login. Makkelijk voor jou, makkelijk voor Goochem.</string>
+    <string name="app_id">691876874206119</string>
+    <string name="action_settings">Instellingen</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in">Inloggen</string>
+    <string name="user_name">Gebruikersnaam</string>
+    <string name="prompt_password_confirmation">Bevestig Wachtwoord</string>
+    <string name="logged_in_as">Ingelogd als:</string>
+
+</resources>

@@ -1,0 +1,17 @@
+= simple_form_for [:dashboard, :project, @sticker] do |f|
+  = f.error_notification
+  %fieldset
+    %legend="#{@project.title} Sticker"
+    .row
+      .large-12.columns
+        =f.input :title, required: true, label: 'Titel', placeholder: "#{@project.title} Sticker"
+    .row
+      .large-12.columns
+        =f.input :description, required: true, label: 'Beschrijving', placeholder: 'Korte beschrijving'
+    .row
+      .large-12.columns
+        =f.input :project_id, as: :hidden, :input_html => { value: params[:project_id] }
+        =f.input :link, as: :hidden, :input_html => { value: project_url(params[:project_id])}
+    .row
+      .large-12.columns
+        =f.button :submit

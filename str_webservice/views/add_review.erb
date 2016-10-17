@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="span6 offset3">
+    	<form action="/movies/<%= @movie.id %>/reviews" method="post" class="well">
+    		<fieldset>
+    			<legend>Add review for: <em><%= @movie.title %></em></legend>
+				<label>The movie was:</label>
+				<select name="rating" placeholder="The Shawshank Redemption" class="span5">
+					<option value="1">AWESOME</option>
+					<option value="0">meh...</option>
+				</select>
+
+	        	<label>Comment:</label>
+	          	<textarea name="comment" placeholder="This movie was good/bad because&hellip;" class="span5"></textarea>
+
+				<button class="btn btn-primary btn-large span5" type="submit">Add Review</button>
+      	 </fieldset>
+      	</form>   
+    </div>
+</div>
+	<div class="row">
+	<div class="span12 back">
+		<a href="/movies" class="btn btn-info">Back to movie-list</a>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context="nl.goochem.introduction.IntroFragment">
+
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:src="@drawable/goochemlogo"
+            android:layout_margin="20dp"
+            android:id="@+id/imageView2" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif"
+                android:textStyle="italic"
+                android:textSize="21sp"
+                android:text="@string/intro_string"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+        </ScrollView>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/intro_button"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/introLoginButton"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_button"
+        android:layout_gravity="center_horizontal" />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/action_register"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/introRegisterButton"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_button"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>

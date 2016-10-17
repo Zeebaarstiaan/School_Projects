@@ -1,0 +1,24 @@
+<div class="row">
+ 	<div class="span6 offset3 well">
+		<h3>Are you sure you want to delete the following movie-review:</h3>  
+		<h4><em>"<%=h @movie.title %>"</em>?</h4>
+		<ul class="info">
+	      <li><strong>This film was:</strong><br>
+	       <% if @review.rating%>
+	         AWESOME
+	       <% else %>
+	         meh...
+	       <% end %>
+	     </li>
+      	 <li><strong>Because:</strong><br> <%=h @review.comment %></li>
+    	</ul>  
+		<form action="/movies/<%= @movie.id %>/reviews/<%= @review.id %>" method="post">  
+		<input type="hidden" name="_method" value="delete">  
+		<input type="submit" value="Yes, Delete It!" class="btn btn-danger btn-large">  
+		<a href="/movies/<%= @movie.id %>/reviews/<%= @review.id %>" class="btn btn-warning">Cancel</a>  
+		</form>  
+ 	</div>
+</div> 
+
+  
+  

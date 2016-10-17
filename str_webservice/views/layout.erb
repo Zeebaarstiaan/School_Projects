@@ -1,0 +1,32 @@
+<!doctype html>  
+<html lang="en">  
+  <head>  
+    <meta charset="utf8">  
+    <title><%= "#{@title} | #{SITE_TITLE}" %></title>  
+    <link href="/bootstrap.css" rel="stylesheet">  
+    <link href="/custom.css" rel="stylesheet">  
+  </head>  
+  <body>  
+    <header>  
+      <hgroup>  
+        <h1><a href="/movies"><%= SITE_TITLE %></a></h1>  
+        <h2><%= SITE_DESCRIPTION %></h2>  
+      </hgroup>  
+    </header>  
+    
+    <div class="container">
+      <% if flash[:notice] %>  
+          <p class="notice"><%= flash[:notice] %>  
+      <% end %>  
+        
+      <% if flash[:error] %>  
+          <p class="error"><%= flash[:error] %>  
+      <% end %>    
+      <%= yield %>  
+    </div>  
+    
+    <footer>  
+      <p><small>An webservice demo for STR6 by <a href="http://www.sebastiaanscheers.nl">Sebastiaan Scheers</a> | <a href="/">Help</a></small></p>  
+    </footer>  
+  </body>  
+</html>  

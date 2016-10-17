@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="span6 offset3">
+      <form action="/movies/<%= @movie.id %>" method="post" class="well">
+        <input type="hidden" name="_method" value="put">  
+        <fieldset>
+          <legend>Edit movie</legend>
+        <label>Title:</label>
+            <input type="text" name="title" value="<%= @movie.title %>" class="span5">
+
+            <label>Release Year:</label>
+            <input type="text" name="released" value="<%= @movie.released %>" class="span5">
+
+            <label>Description:</label>
+              <textarea name="description" class="span5"><%=h @movie.description %></textarea>
+
+
+        <button class="btn btn-primary btn-large span3" type="submit">Edit Movie</button>
+        <a href="/movies/<%= @movie.id %>/delete" class="btn btn-danger btn-large span2">Delete Movie</a>
+         </fieldset>
+        </form>
+    </div>
+</div>
+</div>
+  <div class="row">
+  <div class="span12 back">
+    <a href="/movies" class="btn btn-info">Back to movie-list</a>
+  </div>
+</div>

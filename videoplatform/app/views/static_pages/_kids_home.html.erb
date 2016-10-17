@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/home.png", alt: "Home") %><h1>Welkom, <%= current_user.name + " " + current_user.surname %></h1>
+    </div>
+</div>
+<div class="row">
+    <aside class="span3">
+        <ul class="user-info">
+            <li><strong>Leerlingnummer:</strong><br><%= current_user.login_code %></li>
+            <li><strong>Naam:</strong><br><%= current_user.name + " " + current_user.surname %></li>
+            <li><strong>Laatst ingelogd op:</strong><br><%= current_user.last_login %></li>
+        </ul>
+
+    </aside>
+    <div class="span9">
+        <ul class="course-list">
+        <%= render :partial => 'courses/course', :collection => @courses %>
+        </ul>
+    </div>
+</div>

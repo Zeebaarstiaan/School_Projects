@@ -1,0 +1,87 @@
+<% if signed_in? %>
+<% if admin? %>
+	<div class="row">
+	    <div class="span12 _head clearfix">
+	        <%= image_tag("nav_icons/home.png", alt: "Home") %><h1>Welkom, <%= current_user.name + " " + current_user.surname %></h1>
+	    </div>
+	</div>
+	<div class="row">
+	    <aside class="span3">
+	        <ul class="user-info">
+	            <li><strong>Leerlingnummer:</strong><br><%= current_user.login_code %></li>
+	            <li><strong>Naam:</strong><br><%= current_user.name + " " + current_user.surname %></li>
+	            <li><strong>Laatst ingelogd op:</strong><br><%= current_user.last_login %></li>
+	        </ul>
+
+	    </aside>
+	    <div class="span9">
+	        <h3>Als <%= (user_type).downcase %> kunt u:</h3>
+	        <ul class="control-panel">
+	        	<li>
+					<%= link_to "Gebruiker aanmaken", signup_path, {class: "btn"} %>
+					<%= link_to "Gebruikers bewerken", users_path, {class: "btn"} %>
+	        	</li>
+	        	<li>
+					<%= link_to "Video toevoegen", videos_new_path, {class: "btn"} %>
+					<%= link_to "Video bewerken", videos_path, {class: "btn"} %>
+	        	</li>
+	        	<li>
+	        		<%= link_to "Nieuw vak toevoegen", courses_new_path, {class: "btn"}  %>
+	        		<%= link_to "Alle vakken weergeven", courses_path, {class: "btn"}  %>
+	        	</li>	
+	        </ul>
+	    </div>
+	</div>
+<% end %>
+<% if teacher? %>
+	<div class="row">
+	    <div class="span12 _head clearfix">
+	        <%= image_tag("nav_icons/home.png", alt: "Home") %><h1>Welkom, <%= current_user.name + " " + current_user.surname %></h1>
+	    </div>
+	</div>
+	<div class="row">
+	    <aside class="span3">
+	        <ul class="user-info">
+	            <li><strong>Leerlingnummer:</strong><br><%= current_user.login_code %></li>
+	            <li><strong>Naam:</strong><br><%= current_user.name + " " + current_user.surname %></li>
+	            <li><strong>Laatst ingelogd op:</strong><br><%= current_user.last_login %></li>
+	        </ul>
+
+	    </aside>
+	    <div class="span9">
+	        <h3>Als <%= (user_type).downcase %> kunt u:</h3>
+	        <ul class="control-panel">
+	        	<li>
+					<%= link_to "Gebruikers bewerken", users_path, {class: "btn"} %>
+	        	</li>
+	        	<li>
+					<%= link_to "Video toevoegen", videos_new_path, {class: "btn"} %>
+					<%= link_to "Video bewerken", videos_path, {class: "btn"} %>
+	        	</li>
+	        </ul>
+	    </div>
+	</div>
+<% end %>
+<% if !has_permissions? %>
+	<%= render 'kids_home' %>
+<% end %>
+<% else %>
+<div class="row">
+<div class="span5 info">
+	<h1 class>Welkom op het Videoplatform</h1>
+	<div>
+		<p>Het online leerplatform van SBO Van Heuven Goedhart.</p>
+		<p>Om toegang te krijgen tot het platform dient u eerst in te loggen. 
+			U kunt dit aan de linkerkant doen. Gebruik hiervoor uw ontvangen logingegevens.</p>
+		<p>Uw leerling-code staat vast, maar na het inloggen kunt u uw wachtwoord wijzigen.</p>
+		<ul>
+			<li><strong>Leerling-code:</strong> Vul hier uw nummerieke logincode in</li>
+			<li><strong>Wachtwoord:</strong> Vul hier uw wachtwoord in.</li>
+		</ul>
+	</div>
+</div>
+<div class="span6">
+	<%= render 'sessions/signin_form' %>
+</div>
+<% end %>
+</div>

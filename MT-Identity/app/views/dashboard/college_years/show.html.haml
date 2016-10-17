@@ -1,0 +1,22 @@
+.row
+  .large-12.columns
+    %h2= @college_year.years
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li.current=link_to @college_year.years, dashboard_college_year_path(@college_year)
+
+
+.row
+  .large-12.columns
+    %p
+      %b Beginjaar:
+      = @college_year.start_year
+
+    = link_to 'Bewerken', edit_dashboard_college_year_path(@college_year)
+    \|
+    = link_to 'Terug', dashboard_college_year_path(@college_year)

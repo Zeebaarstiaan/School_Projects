@@ -1,0 +1,14 @@
+.row
+  .large-12
+    %h2 Profiel wijzigen
+.row
+  .large-12
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Gebruikers", dashboard_users_path
+      %li=link_to @user.name, @user
+      %li.current=link_to "Gebruiker bewerken", edit_dashboard_user_path(@user)
+.row
+  .large-12
+    = render 'form'

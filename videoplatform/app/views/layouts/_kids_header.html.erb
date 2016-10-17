@@ -1,0 +1,81 @@
+<header class="container">
+    <div class="row navigation">
+        <div class="span4"><%= link_to image_tag("logo.png", alt: "SBO Van Heuven Goedhart", class: "logo"), root_path %></div>
+        <div class="span8">
+            <div class="menu" style="margin-top: 36px;">
+                <ul class="nav nav-pills">
+                    <li class="<%= 'active' if params[:action] == 'home' && params[:controller] == 'static_pages'  %>">
+                        <%= link_to(root_path) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/home.png", alt: "Home") %></li>
+                                    <li>Home</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li class="<%= 'active' if params[:action] == 'index' && params[:controller] == 'videos'  %>">
+                        <%= link_to(videos_path) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/video.png", alt: "Video's") %></li>
+                                    <li>Alle video's</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li class="<%= 'active' if params[:action] == 'index' && params[:controller] == 'courses'  %>">
+                        <%= link_to(courses_path) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/over-ons.png", alt: "Vakken") %></li>
+                                    <li>Vakken</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li class="<%= 'active' if params[:action] == 'history' && params[:controller] == 'users'  %>">
+                        <%= link_to(history_user_path(current_user)) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/geschiedenis.png", alt: "Bekeken video's") %></li>
+                                    <li>Bekeken video's</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li class="<%= 'active' if params[:action] == 'show' && params[:controller] == 'users'  %>">
+                        <%= link_to(current_user) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/profiel.png", alt: "Profiel") %></li>
+                                    <li>Profiel</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li class="<%= 'active' if params[:action] == 'help' && params[:controller] == 'static_pages'  %>">
+                        <%= link_to(help_path) do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/help.png", alt: "Help") %></li>
+                                    <li>Help</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to(signout_path, method: "delete") do %>
+                            <div class="nav-icon">
+                                <ul>
+                                    <li><%= image_tag("nav_icons/logout.png", alt: "Loguit") %></li>
+                                    <li>Log Uit</li>
+                                </ul>        
+                            </div>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

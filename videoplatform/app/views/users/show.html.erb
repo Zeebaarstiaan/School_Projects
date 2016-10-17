@@ -1,0 +1,34 @@
+<% provide(:title, @user.name + ' ' + @user.surname) %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/profiel.png", alt: "profiel") %><h1><%= current_user.name + " " + current_user.surname %></h1>
+    </div>
+</div>
+<div class="row">
+	<aside class="span4">
+		<ul class="user-info">
+			<li>
+				<strong>ID: </strong><%= @user.id %>
+			</li>
+			<li>
+				<strong>Voornaam: </strong><%= @user.name %>
+			</li>
+			<li>
+				<strong>Achternaam: </strong><%= @user.surname %>
+			</li>
+			<li>
+				<strong>Inlog-code: </strong><%= @user.login_code %>
+			</li>
+			<li>
+				<strong>Account type: </strong><%= user_type %>
+			</li>
+			<li>
+				<strong>Aangemaakt op: </strong><%= @user.created_at %>
+			</li>
+			<li>
+				<strong>Gewijzigd op: </strong><%= @user.updated_at %>
+			</li>
+		</ul>
+	</aside>
+	<div class="span8"></div>
+</div>

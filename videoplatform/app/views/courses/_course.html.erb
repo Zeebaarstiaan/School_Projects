@@ -1,0 +1,15 @@
+<li>
+    <% if has_permissions?%>
+        <%= link_to "Verwijderen", course, method: :delete,
+                                      data: { confirm: "Weet je het zeker?\nDit is permanent en kan niet worden teruggedraaid!" },
+                                      class: "edit_link" %>
+        <%= link_to "Bewerken", edit_course_path(course), class: "edit_link" %>
+    <% end %>
+    <%= link_to(course, class: "clearfix video_item") do %>
+        <%= image_tag(course.image_url, alt: "course icon") %>
+        <h5><%= course.name %></h5>
+        <ul class="inline">
+            <li><strong>Aantal video's: </strong><%= course.videos.count %></li>
+        </ul>
+    <% end %>
+</li>

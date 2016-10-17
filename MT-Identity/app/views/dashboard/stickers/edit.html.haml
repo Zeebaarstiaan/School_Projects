@@ -1,0 +1,9 @@
+.row
+  .large-12
+    %h2 Editing sticker
+
+    = render 'form'
+
+    = link_to 'Show', project_sticker_path(@sticker.project, @sticker)
+    \|
+    = link_to 'Back', project_stickers_path(@sticker.project)

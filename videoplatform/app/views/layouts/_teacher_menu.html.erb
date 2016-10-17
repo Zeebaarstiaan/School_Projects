@@ -1,0 +1,22 @@
+<li class="streep"></li>
+<!-- Users -->
+<li id="fat-menu" class="dropdown <%= 'active' if params[:controller] == 'users' && !current_user?(@user) %>">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    Gebruikers <b class="caret"></b>
+</a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Alle gebruikers weergeven", users_path %></li>
+  </ul>
+</li>
+
+<!-- Video's -->
+<li id="fat-menu" class="dropdown <%= 'active' if params[:controller] == 'videos'  %>">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    Video's <b class="caret"></b>
+</a>
+  <ul class="dropdown-menu">
+    <li><%= link_to "Alle video's weergeven", videos_path %></li>
+    <li><%= link_to "Nieuw video aanmaken", videos_new_path %></li>
+  </ul>
+</li>
+<li class="streep"></li>

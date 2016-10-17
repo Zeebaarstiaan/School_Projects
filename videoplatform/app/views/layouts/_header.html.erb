@@ -1,0 +1,43 @@
+<header class="container">
+	<div class="row navigation">
+		<div class="span4"><%= link_to image_tag("logo.png", alt: "SBO Van Heuven Goedhart", class: "logo"), root_path %></div>
+		<div class="span8">
+			<div class="menu">
+				<ul class="nav nav-pills">
+				    <li class="<%= 'active' if params[:action] == 'home' && params[:controller] == 'static_pages'  %>">
+				    	<%= link_to 'Home', root_path %>
+				    </li>
+				    <li class="<%= 'active' if params[:action] == 'help' && params[:controller] == 'static_pages'  %>">
+				    	<%= link_to 'Help', help_path %>
+				    </li>
+				    <% if signed_in? %>
+	            		
+	            		<% if admin? %>
+				            <%= render 'layouts/admin_menu' %>
+				        <% end %>
+				        <% if teacher? %>
+				            <%= render 'layouts/teacher_menu' %>
+				        <% end %>
+	            		<li id="fat-menu" class="dropdown <%= 'active' if params[:action] == 'show' && params[:controller] == 'users' && current_user?(@user) %>">
+		              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		                	Account <b class="caret"></b>
+		              	</a>
+			              <ul class="dropdown-menu">
+			                <li><%= link_to "Profiel", current_user %></li>
+			                <li><%= link_to "Gegevens wijzigen", edit_user_path(current_user) %></li>
+			                <li class="divider"></li>
+			                <li>
+			                  <%= link_to "Uitloggen", signout_path, method: "delete" %>
+			                </li>
+			              </ul>
+			            </li>
+		          	<% else %>
+			            <li class="<%= 'active' if params[:action] == 'new' || 'create' && params[:controller] == 'sessions' %>">
+			            	<%= link_to "Inloggen", signin_path %>
+			            </li>
+		          	<% end %>
+		    	</ul>
+	    	</div>
+		</div>
+	</div>
+</header>

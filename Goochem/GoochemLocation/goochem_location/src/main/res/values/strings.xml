@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Goochem Location</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="enable_gps">Enable GPS</string>
+    <string name="use_network">Use Network</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login">LoginActivity</string>
+
+
+    <string name="action_refresh">Refresh</string>
+    <string name="welcome_title">Welcome!</string>
+    <string name="welcome_text">Please register or login.</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="user_email">E-mail</string>
+    <string name="user_password">Password</string>
+    <string name="user_name">Username</string>
+    <string name="user_password_confirmation">Password Confirmation</string>
+    <string name="register_disclaimer">Your e-mail will always remain private</string>
+    <string name="save">Save</string>
+    <string name="action_logout">Logout</string>
+
+</resources>

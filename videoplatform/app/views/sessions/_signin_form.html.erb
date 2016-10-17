@@ -1,0 +1,17 @@
+<%= simple_form_for :session, :html => { :class => 'form-horizontal signin' }, url: sessions_path do |f| %>
+    <% if notification = f.error_notification %>
+	    <div class="alert alert-error fade in">
+	      <a class="close" data-dismiss="alert" href="#">&times;</a>
+	      <%= notification %>
+	    </div>
+	<% end %>
+
+	<%= field_set_tag 'Inloggen' do %>
+	    <%= f.input :login_code, :label => "Leerling-code" %>
+	  	<%= f.input :password, :label => "Wachtwoord" %>
+  	<% end %>
+  	
+	<div class="btn-div">
+		<%= f.button :submit, "Inloggen", :class => 'btn-large btn-primary span5' %>
+	</div>
+<% end %>

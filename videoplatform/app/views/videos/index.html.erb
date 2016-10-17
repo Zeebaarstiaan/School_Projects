@@ -1,0 +1,16 @@
+<% provide(:title, "Alle video's") %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/video.png", alt: "Video's") %><h1>Video's</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10 offset1">
+        <ul class="video-list">
+          <%= render @videos %>
+        </ul>
+
+        <%= will_paginate @videos %>
+    </div>
+</div>

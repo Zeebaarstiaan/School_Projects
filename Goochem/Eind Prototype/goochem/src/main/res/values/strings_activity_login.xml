@@ -1,0 +1,18 @@
+<resources>
+        <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Wachtwoord</string>
+    <string name="action_sign_in">Aanmelden</string>
+    <string name="action_sign_in_short">Log In</string>
+    <string name="action_register">Registreren</string>
+
+    <string name="general_error">Er ging iets mis. Probeer opnieuw.</string>
+    <string name="error_invalid_email">Dit emailadres is niet geldig</string>
+    <string name="error_invalid_password">Dit wachtwoord is te kort</string>
+    <string name="error_invalid_username">De gebruikersnaam is te kort</string>
+    <string name="error_incorrect_password">Dit wachtwoord is incorrect</string>
+    <string name="error_field_required">Dit veld is verplicht</string>
+    <string name="error_unmatching_password">Bevestiging komt niet overeen met wachtwoord</string>
+</resources>

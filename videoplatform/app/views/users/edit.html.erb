@@ -1,0 +1,9 @@
+<% provide(:title, "Gegevens aanpassen") %> 
+<div class="row">
+  <div class="span12 title"><h1>Gegevens aanpassen</h1></div>
+</div>
+<% if admin? %>
+	<%= render 'users/form' %>
+<% else %>
+	<%= render 'users/edit_form' %>
+<% end %>

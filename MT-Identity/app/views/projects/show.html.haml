@@ -1,0 +1,52 @@
+#group_overlay_modal.reveal-modal.full-modal
+  #group_overlay_content.clearfix
+.full_width_blue
+  .row
+    .large-9.large-centered.columns
+      .row
+        .large-3.columns.thumbnail
+          =image_tag @project.preview.large_project.url
+        .large-9.columns.project_wrapper
+          %h2=@project.title
+          %p.clearFix=@project.description
+
+.row
+  - if @groups.any?
+    .large-12.columns.project-timeline
+      .timeline-info
+        .year #{@college_year.years}
+      .timeline
+        - @groups.each do |group|
+          .project.box{id: group.id}
+            .header
+            %h2=group.title
+            .box-description
+              %p=group.description
+
+            .read-more
+              -if group.pictures.any?
+                =image_tag(group.pictures.first.image.banner.url)
+              -else
+                =image_tag('banner_default_preview.png')
+              =link_to "Meer lezen", college_year_project_group_path(@college_year, @project, group), :remote => true
+  - else
+    .large-4.large-centered.columns
+      %h2 Geen teams
+      %p Er zijn voor dit jaar nog geen teams.
+
+:javascript
+  $(window).load(function(){
+    $('.timeline').masonry({
+      // options
+      itemSelector : '.project',
+      columnWidth: 425,
+      isAnimated: true,
+      gutterWidth: 70,
+      animationOptions: {
+        duration: 400,
+        easing: 'linear',
+        queue: true
+      }
+    });
+    $('.timeline').masonry('reload')
+  });

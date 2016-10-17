@@ -1,0 +1,15 @@
+.row
+  .large-12.columns
+    %h2 Nieuw project
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li=link_to @college_year.years, dashboard_college_year_path(@college_year)
+      %li=link_to "Projecten", dashboard_college_year_projects_path(@college_year)
+      %li.current=link_to "Nieuw project", new_dashboard_college_year_project_path(@college_year)
+.row
+  .large-12.columns
+    = render 'form'

@@ -1,0 +1,10 @@
+%li.user.clearfix
+  -if user.avatar?
+    =image_tag(user.avatar.profile.url, class: "left avatar_overview")
+  -else
+    =image_tag "default_user.png", class: "left"
+  .user-info
+    %p=user.name
+    =link_to user, class: "more" do
+      = "Meer werk zien van #{user.first_name}"
+      %i.icon-arrow-right

@@ -1,0 +1,54 @@
+/ Main Page Content and Sidebar
+.row
+	.large-9.columns
+		%h2 Contact
+
+		%p Voor al uw vragen kunt u ten alle tijden contact opnemen met Emiel Bakker. De contactgegevens van Emiel Bakker vind u aan de rechterzijde van deze pagina.
+
+		.row
+			.large-7.columns
+				%h3 Locatie
+
+				%iframe.maps{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://maps.google.nl/maps?source=s_q&f=q&hl=nl&geocode=&q=Wijnhaven+99,+Centrum&aq=1&oq=Wijnha&sll=51.927972,4.490406&sspn=0.229916,0.676346&ie=UTF8&hq=&hnear=Wijnhaven+99,+3011+WN+Centrum,+Rotterdam,+Zuid-Holland&t=m&z=14&ll=51.924473,4.487143&output=embed", :width => "425"}
+
+			.large-5.columns
+				%div.maps_info
+					%h4 Adres
+					%ul.address
+						%li 
+							%strong Hogeschool Rotterdam
+						%li Instituut voor Communicatie, Media en Informatietechnologie
+
+						%br
+
+						%li Wijnhaven 99
+						%li 3011 WN, Rotterdam
+
+					%a{:href => "https://maps.google.nl/maps?f=q&source=embed&hl=nl&geocode=&q=Wijnhaven+99,+Centrum&aq=1&oq=Wijnha&sll=51.927972,4.490406&sspn=0.229916,0.676346&ie=UTF8&hq=&hnear=Wijnhaven+99,+3011+WN+Centrum,+Rotterdam,+Zuid-Holland&ll=51.917368,4.484805&spn=0.007187,0.021136&t=m&z=14", :target => "_blank"} Grotere kaart weergeven
+		 
+	.large-3.columns
+		%h4.contact_person Contactpersoon
+
+		=image_tag "contactperson.png", class: "contact_person_image"
+
+		%ul.contact_person
+			%li Emiel Bakker
+
+			%br
+
+			%li
+				%strong Kerndocent Mediatechnologie
+			%li Instituut voor Communicatie, Media en Informatietechnologie
+			
+			%br
+			
+			%li E: e.p.bakker@hr.nl
+			%li T: 010 – 794 6531
+
+			%br
+			%br
+			%br
+
+			%li.feedback Werkt er iets niet?
+			%a{href: "mailto:0841286@hr.nl"}
+				%li.button Laat het ons weten!

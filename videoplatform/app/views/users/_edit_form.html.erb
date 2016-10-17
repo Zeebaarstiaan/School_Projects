@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="span8 offset2">
+    <%= simple_form_for @user, :html => { :class => 'form-horizontal signup' } do |f| %>
+    <% if notification = f.error_notification %>
+      <div class="alert alert-error fade in">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <%= notification %>
+      </div>
+    <% end %>
+
+    <div class="personal">
+      <h5>Persoonlijke gegevens:</h5>
+      <%= f.input :name, :label => "Voornaam" %>
+      <%= f.input :surname, :label => "Achternaam" %>
+    </div>
+
+    <div class="site_related">
+      <h5>Sitegerelateerde gegevens:</h5>
+      <%= f.input :password, :label => "Wachtwoord"%>
+      <%= f.input :password_confirmation, :label => "Wachtwoord bevestigen"%>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Opslaan", :class => 'btn-primary' %>
+      <%= submit_tag 'Opnieuw', :type => :reset, :class => "btn btn-danger" %>
+    </div>
+  <% end %>
+  </div>
+</div>

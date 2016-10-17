@@ -1,0 +1,11 @@
+<li>
+	<%= link_to user.name + " " + user.surname, user %>
+	<% if teacher? && !current_user?(user) %>
+		| <%= link_to "edit", edit_user_path(user) %> 
+	<% end %>
+	<% if admin? && !current_user?(user) %>
+		| <%= link_to "edit", edit_user_path(user) %> 
+		| <%= link_to "delete", user, method: :delete,
+	                              data: { confirm: "Weet je het zeker?\nDit is permanent en kan niet worden teruggedraaid!" } %>
+	<% end %>
+</li>

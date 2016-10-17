@@ -1,0 +1,38 @@
+= simple_form_for [:dashboard, :college_year, :project, @group] do |f|
+  = f.error_notification
+  %fieldset
+    %legend Team
+    .row
+      .large-12.columns
+        =f.input :title, required: true, label: 'Titel', placeholder: 'Naam van product/team'
+    .row
+      .large-12.columns
+        =f.input :description, required: true, label: 'Beschrijving', placeholder: 'Korte Inleiding'
+    .row
+      .large-12.columns
+        =f.input :content, required: false, label: 'Inhoud', placeholder: 'Uitgebreide beschrijving', input_html: {class: "ckeditor"}
+    .row
+      .large-12.columns
+        =f.input :project_id, required: true, label: 'Project', collection: @college_years, as: :grouped_select, group_method: :projects , group_label_method: :years, label_method: :title, value_method: :id, prompt: "Selecteer een Project"
+        =f.hidden_field :college_year_id, value: params[:college_year_id]
+    .row
+      .large-12.columns
+        =f.association :users, collection: @users, value_method: :id, required: true, label: "Deelnemers", input_html: {class: "select2-input"}
+    .row
+      .large-6.columns
+        =f.input :archived, required: false
+      .large-6.columns
+        =f.input :approved, required: false
+    .row
+      .large-12.columns
+        - if params[:action] == "new"
+          =f.button :submit, "Team aanmaken"
+        - else
+          =f.button :submit, "Wijzigingen opslaan"
+        =link_to "Annuleren", :back, class: "button secondary"
+
+:javascript
+  $('#group_project_id').change(function(){
+    var optgroup = $('#group_project_id :selected').parent().attr('label');
+    $('#group_college_year_id').val(optgroup);
+  });

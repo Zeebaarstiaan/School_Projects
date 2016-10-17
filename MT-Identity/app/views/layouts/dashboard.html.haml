@@ -1,0 +1,98 @@
+!!! 5
+/ paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+/[if lt IE 7 ] <html class=\"ie6\" lang=\"en\">
+/[if IE 7 ]    <html class=\"ie7\" lang=\"en\">
+/[if IE 8 ]    <html class=\"ie8\" lang=\"en\">
+/[if IE 9 ]    <html class=\"ie9\" lang=\"en\">
+/[if (gt IE 9)|!(IE)] <!--> <html lang=\"en\">
+
+%head
+  %meta{ :charset => "utf-8" }
+
+  -# Uncomment to make IE8 render like IE7
+  -# meta http-equiv="X-UA-Compatible" content="IE=7"
+
+  -# Set the viewport width to device width for mobile
+  %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+
+  %title= content_for?(:title) ? yield(:title) : "Mediatechnologie op de kaart"
+
+  = stylesheet_link_tag "application"
+  = javascript_include_tag "vendor/custom.modernizr"
+  = csrf_meta_tag
+  = javascript_include_tag "application"
+
+%header
+  #user-nav
+    .row
+      .large-12.columns
+        .nav-bar.right
+          %ul.button-group.right.login-menu
+            %li
+              =link_to root_path do
+                %i.icon-arrow-right
+                Terug naar website
+            %li
+              =link_to destroy_user_session_path, :method => :delete, class: "logout" do
+                %i.icon-signout
+                Uitloggen
+        =image_tag current_user.avatar.thumb.url, class: "avatar_overview"
+        %p
+          ="Ingelogd als: "
+          = link_to current_user.name, current_user
+
+  .row
+    .large-12.column
+      %h1#dashboard Beheersysteem
+
+  .row
+    .large-12.column
+      %ul#dash-nav
+        %li{:class => active_class("dashboard/home")}
+          =link_to "Dashboard", dashboard_dashboard_path
+        - if current_user.is_admin?
+          %li{:class => active_class("dashboard/college_years")}
+            =link_to "Collegejaren", dashboard_college_years_path
+          %li{:class => "#{active_class("dashboard/projects")} #{active_class("dashboard/college_years/projects")}"}
+            =link_to "Projecten", dashboard_projects_path
+        %li{:class => "#{active_class("dashboard/groups")} #{active_class("dashboard/projects/groups")}"}
+          =link_to "Teams", dashboard_groups_path
+        - if current_user.is_admin?
+          %li{:class => active_class("dashboard/clients")}
+            =link_to "Opdrachtgevers", dashboard_clients_path
+          %li{:class => active_class("dashboard/users")}
+            =link_to "Gebruikers", dashboard_users_path
+        / %li{:class => active_class("dashboard/stickers")}
+        / =link_to "Stickers", dashboard_stickers_path
+
+
+%body#dashboard
+  = render 'layouts/messages'
+  = yield
+
+%footer.row
+  .large-12.columns
+    %hr/
+    .row
+      .large-4.columns
+        %p
+          %a{href: "http://project.cmi.hro.nl/2012_2013/mlab1_eetp_t2/"} © Copyright Double Up Development 2013
+      .large-8.columns
+        %ul.inline-list.right
+          %li.hr
+            %span.hr-info
+              Mediatechnologie is onderdeel van
+            %a.hr-icon{href: "http://www.hogeschoolrotterdam.nl/opleidingen/mediatechnologie/voltijd"}
+              =image_tag "hricon.png", class: "footer_icon"
+          %li
+            %a{href: "https://www.facebook.com/mediatechnologie?fref=ts"}
+              =image_tag "facebookicon.png", class: "footer_icon"
+          %li
+            %a{href: "https://twitter.com/search?q=%23mtnerds&src=hash"}
+              =image_tag "twittericon.png", class: "footer_icon"
+
+          %li= link_to "About", about_path
+          %li= link_to "Contact", contact_path
+.row
+  .large-12
+    #footnotes_holder

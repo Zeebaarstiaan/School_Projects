@@ -1,0 +1,73 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/dark_1"
+    android:orientation="vertical"
+    tools:context="nl.rotterdamcs.goochem.introduction.IntroFragment">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:src="@drawable/goochem_white_stroke"
+            android:layout_margin="30dp"
+            android:id="@+id/imageView" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="160dp"
+            android:src="@drawable/ic_launcher"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imageView2" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif"
+                android:textStyle="italic"
+                android:textSize="21sp"
+                android:text="@string/intro_string"
+                android:layout_gravity="center"
+                android:gravity="center"
+                />
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/intro_button"
+                android:textColor="@color/cyan_main"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_navigation_forward"/>
+
+        </LinearLayout>
+
+
+</LinearLayout>

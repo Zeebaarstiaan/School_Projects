@@ -1,0 +1,27 @@
+<% provide(:title, 'Vak toeveogen') %>
+<div class="row">
+    <div class="span12 title"><h1>Vak toevoegen</h1></div>
+</div>
+<div class="row">
+  <div class="span8 offset2">
+    <%= simple_form_for @course, :html => { :class => 'form-horizontal signup' } do |f| %>
+    <% if notification = f.error_notification %>
+      <div class="alert alert-error fade in">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <%= notification %>
+      </div>
+    <% end %>
+
+    <div>
+      <h5>Sitegerelateerde gegevens:</h5>
+      <%= f.input :name, :label => "Naam", :hint => "Bv: Biologie" %>
+      <%= f.input :image_url, :label => "URL Icoontje", :hint => "Bv: course_icons/biologie.png" %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Opslaan", :class => 'btn-primary' %>
+      <%= submit_tag 'Opnieuw', :type => :reset, :class => "btn btn-danger" %>
+    </div>
+  <% end %>
+  </div>
+</div>

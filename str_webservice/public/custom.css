@@ -1,0 +1,71 @@
+header, footer {
+	text-align: center;
+}
+
+header{
+	border-bottom:1px solid #ddd;
+	margin-bottom: 20px;
+	margin-top:10px;
+}
+
+footer{
+	border-top:1px solid #ddd;
+	margin-top:20px;
+	margin-bottom:10px;
+}
+
+fieldset label{
+	margin-top: 10px;
+}
+
+fieldset .btn{
+	margin:10px 0 0 ;
+}
+
+.error{color:red; text-align: center;}
+.notice{color:green; text-align: center;}
+
+.edit a{
+	font-size: 10px;
+}
+
+.meta {
+	font-size: 10px;
+	margin:0;
+	padding:0;
+	border-top: 1px solid #ddd;
+}
+
+.info li{
+	list-style-type: none;
+	margin-bottom: 10px
+}
+
+.back{
+	text-align: center;
+}
+
+.list{
+	font-size: 20px;
+	margin:10px;
+}
+
+.list li{
+	margin-bottom: 10px;
+}
+
+fieldset .btn-danger{
+	margin-left: 20px;
+}
+
+.review a{
+	display: block;
+	background-color: #EC9593;
+	border:1px solid #DA302C;
+	padding:10px;
+}
+
+.review a.good{
+	background-color: #B4ED92;
+	border:1px solid #3CDC29;
+}

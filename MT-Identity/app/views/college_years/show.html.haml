@@ -1,0 +1,70 @@
+#overlay_modal.reveal-modal.full-modal
+  #overlay_content.clearfix
+#group_overlay_modal.reveal-modal.full-modal
+  #group_overlay_content.clearfix
+.full_width_blue
+  .row
+    .large-1.columns
+      - if @previous_college_year.present?
+        .read-more-left
+          =link_to "", college_year_path(@previous_college_year)
+    .large-10.columns
+      %div.college_year_wrapper
+        %h2
+          Collegejaar
+          %span.college_year=@college_year.years
+    .large-1.columns
+      - if @next_college_year.present?
+        .read-more-right
+          =link_to "", college_year_path(@next_college_year)
+.row.user-project-detail
+  .large-12.columns
+    %br
+    .timeline.college-year-time
+      #timeline-info
+        .year #{@college_year.years}
+
+      .timeline
+        - @college_year.projects.each do |project|
+          .project.box{id: project.id}
+            .header
+            %h2=project.title
+            .box-description
+              %p=project.description
+
+            .read-more
+              =image_tag project.preview.banner.url
+              =link_to "Meer lezen", project_path(project, :college_year_id => @college_year), :remote => true
+
+:javascript
+  $(window).load(function(){
+    function Arrow_Points(){
+      var s = $('.timeline').find('.project');
+      $.each(s,function(i,obj){
+        var posLeft = $(obj).css("left");
+        if(posLeft == "0px"){
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-left");
+        }else{
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-right");
+        }
+      });
+    }
+
+    $('.timeline').masonry({
+      // options
+      itemSelector : '.project',
+      columnWidth: 425,
+      isAnimated: true,
+      gutterWidth: 65,
+      animationOptions: {
+        duration: 400,
+        easing: 'linear',
+        queue: true,
+        done: function(){
+          Arrow_Points();
+        }
+      }
+    });
+    $('.timeline').masonry('reload');
+    Arrow_Points()
+  });

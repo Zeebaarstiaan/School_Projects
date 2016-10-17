@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red">#900</color>
+    <color name="green">#090</color>
+    <color name="blue">#009</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="transparent_white">#e5ffffff</color>
+
+    <!-- Theme Colors -->
+    <color name="cyan_main">#4bd4af</color>
+    <color name="cyan_dark">#36cfa5</color>
+    <color name="cyan_light">#74dec1</color>
+    <color name="gray_main">#ff292929</color>
+    <color name="gray_light">#ffb2b2b2</color>
+    <color name="text_gray">#ff898989</color>
+
+    <!-- New Colors -->
+    <color name="dark_1">#2e3138</color>
+    <color name="dark_2">#525863</color>
+    <color name="dark_3">#444953</color>
+
+</resources>

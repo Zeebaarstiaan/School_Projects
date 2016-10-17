@@ -1,0 +1,36 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+.test{
+  border: 1px solid black;
+}
+
+.names{
+  text-align: center;
+}
+
+.active{
+  color: #56c2d4;
+}
+
+.bg{
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

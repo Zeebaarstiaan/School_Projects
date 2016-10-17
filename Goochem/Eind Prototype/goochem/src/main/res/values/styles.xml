@@ -1,0 +1,94 @@
+<resources>
+    <style name="Theme.Purple" parent="@android:style/Theme.Holo">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_purple</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu.Purple</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Purple</item>
+        <item name="android:actionBarTabStyle">@style/ActionBarTabStyle.Purple</item>
+        <item name="android:actionDropDownStyle">@style/DropDownNav.Purple</item>
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Purple</item>
+        <item name="android:actionModeBackground">@drawable/cab_background_top_purple</item>
+        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_purple</item>
+        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Purple</item>
+
+        <!-- Holo Colors -->
+        <item name="android:editTextBackground">@drawable/purple_edit_text_holo_light</item>
+        <item name="android:textColorHighlight">#995455a3</item>
+        <item name="android:textSelectHandleLeft">@drawable/purple_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/purple_text_select_handle_right</item>
+        <item name="android:textSelectHandle">@drawable/purple_text_select_handle_middle</item>
+
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewpurple</item>
+
+        <item name="android:listChoiceIndicatorMultiple">@drawable/purple_btn_check_holo_light</item>
+
+        <item name="android:listChoiceIndicatorSingle">@drawable/purple_btn_radio_holo_light</item>
+
+        <item name="android:buttonStyle">@style/Buttonpurple</item>
+
+        <item name="android:imageButtonStyle">@style/ImageButtonpurple</item>
+
+        <item name="android:dropDownSpinnerStyle">@style/Spinnerpurple</item>
+
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarpurple</item>
+
+        <item name="android:seekBarStyle">@style/SeekBarpurple</item>
+
+        <item name="android:ratingBarStyle">@style/RatingBarpurple</item>
+
+        <item name="android:ratingBarStyleIndicator">@style/RatingBarBigpurple</item>
+
+        <item name="android:ratingBarStyleSmall">@style/RatingBarSmallpurple</item>
+
+        <item name="android:buttonStyleToggle">@style/Togglepurple</item>
+
+        <item name="android:listChoiceBackgroundIndicator">@drawable/purple_list_selector_holo_light</item>
+
+        <item name="android:activatedBackgroundIndicator">@drawable/purple_activated_background_holo_light</item>
+
+        <item name="android:fastScrollThumbDrawable">@drawable/purple_fastscroll_thumb_holo</item>
+    </style>
+
+    <style name="ActionBar.Solid.Purple" parent="@android:style/Widget.Holo.ActionBar.Solid">
+        <item name="android:background">@drawable/ab_solid_purple</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_purple</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_purple</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Purple</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Purple" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_purple</item>
+        <item name="android:progressBarStyle">@style/ProgressBar.Purple</item>
+    </style>
+
+    <style name="PopupMenu.Purple" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_purple</item>
+    </style>
+
+    <style name="DropDownListView.Purple" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_purple</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Purple" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_purple</item>
+    </style>
+
+    <style name="DropDownNav.Purple" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_purple</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_purple</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_purple</item>
+    </style>
+
+    <style name="ProgressBar.Purple" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_purple</item>
+    </style>
+
+    <style name="ActionButton.CloseMode.Purple" parent="@android:style/Widget.Holo.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_purple</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Purple.Widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/PopupMenu.Purple</item>
+        <item name="android:dropDownListViewStyle">@style/DropDownListView.Purple</item>
+    </style>
+</resources>

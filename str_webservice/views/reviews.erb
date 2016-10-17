@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="span6 offset3 well">
+		<h2>All Reviews for <em><%= @movie.title %></em> <span class="edit"><a href="/movies/<%= @movie.id %>/reviews/add">[Add new review]</a></span>  </h2>
+		<ol class="list">
+			<% @reviews.each do |review| %>  
+			  <li class="review"><a href="/movies/<%= @movie.id %>/reviews/<%= review.id %>"  <%= 'class="good"' if review.rating %>><%= review.comment %></a></li>
+			<% end %>  
+		</ol>
+	</div>
+</div>
+</div>
+	<div class="row">
+	<div class="span12 back">
+		<a href="/movies/<%= @movie.id %>" class="btn btn-info">Back to movie-info</a>
+	</div>
+</div>

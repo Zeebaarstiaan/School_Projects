@@ -1,0 +1,42 @@
+<% provide(:title, @video.title) %> 
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag(@video.course.image_url, alt: "Video") %><h1><%= @video.title %></h1>
+    </div>
+</div>
+<div class="video">
+    <%= render 'youtube_embed' %>
+    <div class="row">
+        <div class="span10 offset1">
+            <div class="video-info">
+                <div class="row">
+                    <div class="span6">
+                        <h2><%= @video.title %></h2>
+                        <h3><strong>Vak: </strong><%= @video.course.name %></h3>
+                        <h4>Beschrijving:</h4>
+                        <%= simple_format((auto_link(@video.description))) %>
+                    </div>
+                    <div class="span3 rating-box">
+                        <% content_for(:scripts) do %>
+                            <%= javascript_include_tag 'rating_ballot' %>
+                        <% end %>
+                        <%= form_for(rating_ballot, :remote => true, :html => { :class => 'rating_ballot' }) do |f| %>
+                        <%= f.label("value_1", content_tag(:span, '1'), {:class=>"rating", :id=>"1"}) %>
+                        <%= radio_button_tag("rating[value]", 1, current_user_rating == 1, :class => 'rating_button') %>
+                        <%= f.label("value_2", content_tag(:span, '2'), {:class=>"rating", :id=>"2"}) %>
+                        <%= radio_button_tag("rating[value]", 2, current_user_rating == 2, :class => 'rating_button') %>
+                        <%= f.label("value_3", content_tag(:span, '3'), {:class=>"rating", :id=>"3"}) %>
+                        <%= radio_button_tag("rating[value]", 3, current_user_rating == 3, :class => 'rating_button') %>
+                        <%= f.label("value_4", content_tag(:span, '4'), {:class=>"rating", :id=>"4"}) %>
+                        <%= radio_button_tag("rating[value]", 4, current_user_rating == 4, :class => 'rating_button') %>
+                        <%= hidden_field_tag("video_id", @video.id) %>
+                        <%= f.submit :submit, :id => 'rating_submit'%>
+                        <% end %>
+
+                        <p id="rating_data">Gemiddelde: <%= @video.average_rating %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

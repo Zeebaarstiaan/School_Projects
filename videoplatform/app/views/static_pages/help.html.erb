@@ -1,0 +1,19 @@
+<% provide(:title, "Help") %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/help.png", alt: "Help") %><h1>Help</h1>
+    </div>
+</div>
+<% if signed_in? %>
+	<% if has_permissions? %>
+	    <%= render 'static_pages/admin_help' %>
+	<% else %>
+	    <%= render 'static_pages/kids_help' %>
+	<% end %>
+<% else %>
+	<div class="row">
+	  <div class="span12">
+	  	<p>Dit platform is alleen beschikbaar voor leerlingen en medewerkers van SBO Van Heuven Goedhart. U zult moeten inloggen met uw ontvangen leerlingscode. Indien u deze niet weet zal er contact moeten worden opgenomen met een docent.</p>
+	  </div>
+	</div>
+<% end %>

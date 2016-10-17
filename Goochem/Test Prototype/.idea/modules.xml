@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GoochemLocation.iml" filepath="$PROJECT_DIR$/GoochemLocation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/goochem_location/goochem_location.iml" filepath="$PROJECT_DIR$/goochem_location/goochem_location.iml" />
+    </modules>
+  </component>
+</project>
+

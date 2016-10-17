@@ -1,0 +1,17 @@
+.row
+  .large-12.columns
+    %p#notice= notice
+
+    %p
+      %b Naam:
+      = @client.name
+    %p
+      %b Beschrijving:
+      = @client.description
+    %p
+      %b Site:
+      = @client.site
+
+    = link_to 'Bewerk', edit_dashboard_client_path(@client)
+    \|
+    = link_to 'Terug', dashboard_clients_path

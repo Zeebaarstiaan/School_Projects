@@ -1,0 +1,27 @@
+= simple_form_for [:dashboard, @client] do |f|
+  = f.error_notification
+
+  %fieldset
+    %legend Opdrachtgever
+    .row
+      .large-12.columns
+        =f.input :name, required: true, label: 'Naam'
+    .row
+      .large-12.columns
+        =f.input :description, required: false, label: 'Beschrijving'
+    .row
+      .large-12.columns
+        =f.label 'Website'
+    .row.collapse
+      .small-3.large-2.columns
+        %span.prefix http://
+      .small-9.large-10.columns
+        =f.text_field :site, :required => false
+
+  .row
+    .large-12.columns
+      - if params[:action] == "edit"
+        = f.button :submit, "Opdrachtgever bijwerken"
+      - else
+        = f.button :submit, "Opdrachtgever aanmaken"
+      =link_to "Annuleren", :back, class: "button secondary"

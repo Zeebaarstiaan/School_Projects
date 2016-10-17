@@ -1,0 +1,26 @@
+<% provide(:title, "Bekeken video's") %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/geschiedenis.png", alt: "Bekeken video's") %><h1>Bekeken video's</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10 offset1">
+        <ul class="video-list">
+          <% @views.each do |view| %>
+            <li>
+                <%= link_to(Video.find(view.video_id), class: "clearfix video_item") do %>
+                    <%= image_tag(Video.find(view.video_id).course.image_url, alt: "video icon") %>
+                    <h5><%= Video.find(view.video_id).title %></h5>
+                    <ul class="inline">
+                        <li><strong>Voor het laatst bekeken op: </strong><%= view.created_at %></li>
+                    </ul>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+        <%= will_paginate @views %>
+    </div>
+</div>

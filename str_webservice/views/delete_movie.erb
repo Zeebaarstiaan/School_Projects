@@ -1,0 +1,14 @@
+<div class="row">
+ 	<div class="span6 offset3 well">
+		<h3>Are you sure you want to delete the following movie:</h3>  
+		<h4><em>"<%=h @movie.title %>"</em>?</h4>
+		<form action="/movies/<%= @movie.id %>" method="post">  
+		<input type="hidden" name="_method" value="delete">  
+		<input type="submit" value="Yes, Delete It!" class="btn btn-danger btn-large">  
+		<a href="/movies/<%= @movie.id %>" class="btn btn-warning">Cancel</a>  
+		</form>  
+ 	</div>
+</div> 
+
+  
+  

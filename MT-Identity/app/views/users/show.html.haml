@@ -1,0 +1,121 @@
+#group_overlay_modal.reveal-modal.full-modal
+  #group_overlay_content.clearfix
+.full_width_gray
+  .row
+    .large-2.user-detail-left
+      = image_tag @user.avatar.profile.url, class: "avatar"
+    .large-5.user-detail-left
+      %p.first-name
+        = @user.name
+      %p.description
+        = @user.description
+    .large-4.user-detail-right
+      %p
+        %span.profile-info Studentnummer
+        = @user.student_number
+      %p
+        %span.profile-info Beginjaar
+        = @user.starting_year_display
+      %p
+        %span.profile-info E-mail
+        = @user.email
+      - if @user.portfolio.present?
+        %p
+          %span.profile-info Portfolio
+          %a{href: "http://#{@user.portfolio}", class: "profile-info"}= "http://"+@user.portfolio
+        %br
+      - if @user == current_user
+        %p= link_to 'Profiel wijzigen', edit_user_path(@user), class: "button"
+
+.row.user-project-detail
+  .large-12
+    -if @user.groups.any?
+      %h3.user-projects
+        = @user.first_name
+        heeft gewerkt aan
+      .timeline#container.no-bg
+        -@user.groups.each do |group|
+          .project.box{id: group.id}
+            .header
+            %h2=group.title
+            .box-description
+              %p=group.description
+            .read-more
+              -if group.pictures.any?
+                =image_tag (group.pictures.first.image.banner.url)
+              -else
+                =image_tag ('banner_default_image.png')
+
+              =link_to "Meer lezen", college_year_project_group_path(group.college_year, group.project, group) ,:remote => true
+
+
+
+:javascript
+  $(window).load(function(){
+    function Arrow_Points(){
+      var s = $('.timeline').find('.project');
+      $.each(s,function(i,obj){
+        var posLeft = $(obj).css("left");
+        if(posLeft == "0px"){
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-left");
+        }else{
+          $(obj).find('.header').removeClass('head-right head-left').addClass("head-right");
+        }
+      });
+    }
+
+    $('.timeline').masonry({
+      // options
+      itemSelector : '.project',
+      columnWidth: 425,
+      isAnimated: true,
+      gutterWidth: 65,
+      animationOptions: {
+        duration: 400,
+        easing: 'linear',
+        queue: true,
+        done: function(){
+          Arrow_Points();
+        }
+      }
+    });
+    $('.timeline').masonry('reload');
+
+    $(function(){
+      var $container = $('#container');
+      $container.imagesLoaded(function(){
+        $container.masonry({
+          itemSelector: '.box',
+          columnWidth: 100
+        });
+      });
+
+      $container.infinitescroll({
+        navSelector  : '#page-nav',    // selector for the paged navigation
+        nextSelector : '#page-nav a',  // selector for the NEXT link (to page 2)
+        itemSelector : '.box',     // selector for all items you'll retrieve
+        loading: {
+            finishedMsg: 'No more pages to load.',
+            img: 'http://i.imgur.com/6RMhx.gif'
+          }
+        },
+        // trigger Masonry as a callback
+        function( newElements ) {
+          // hide new items while they are loading
+          var $newElems = $( newElements ).css({ opacity: 0 });
+          // ensure that images load before adding to masonry layout
+          $newElems.imagesLoaded(function(){
+            // show elems now they're ready
+            $newElems.animate({ opacity: 1 });
+            $container.masonry( 'appended', $newElems, true );
+          });
+        }
+      );
+    });
+
+    Arrow_Points();
+  });
+  if ($(".debug").length > 0){
+    console.log("debug main")
+    $(".box-description").dotdotdot();
+  }

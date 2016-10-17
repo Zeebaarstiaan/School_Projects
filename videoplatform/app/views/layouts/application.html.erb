@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= yield :scripts %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>    
+  </head>
+  <body>
+    <% if signed_in? && !has_permissions? %>
+      <%= render 'layouts/kids_header' %>
+      <div class="container main">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+      <div class="container main">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+        <% end %>
+        <%= yield %>
+      </div>
+      <%= render 'layouts/footer' %>
+    <% end %>
+    <div class="container"><%= debug(params) if Rails.env.development? %></div>
+  </body>
+</html>

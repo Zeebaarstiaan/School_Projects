@@ -1,0 +1,44 @@
+.row
+  .large-12.column
+    %h2
+      Projecten
+      =link_to new_dashboard_college_year_project_path(@college_year), class: "btn-primary" do
+        %i.icon-plus
+        Nieuw project toevoegen
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li=link_to @college_year.years, dashboard_college_year_path(@college_year)
+      %li.current=link_to "Projecten", dashboard_college_year_projects_path(@college_year)
+
+.row
+  .large-12.column
+    - if @projects.present?
+      -@projects.each do |project|
+        .row.info-row
+          .large-2.column
+            = image_tag project.preview.thumb.url
+          .large-7.columns.info-description
+            %h3= project.title
+            %p= project.description
+          .large-3.columns.nested-list
+            %ul
+              - if project.groups.where(:college_year_id => @college_year.id).any?
+                - project.groups.where(:college_year_id => @college_year.id).order("id desc").limit(5).each do |group|
+                  %li=link_to group.title, dashboard_college_year_project_group_path(@college_year, project, group)
+              - else
+                %li Nog geen teams...
+        .row.buttons-row
+          .large-12.columns
+            %ul
+              %li= link_to 'Teams', dashboard_college_year_project_groups_path(@college_year, project), class: "button small info"
+              %li= link_to "Bekijk", dashboard_college_year_project_path(@college_year, project), class: "button small"
+              %li= link_to 'Bewerk', edit_dashboard_college_year_project_path(@college_year, project), class: "button small"
+              %li= link_to 'Verwijder', dashboard_college_year_project_path(@college_year, project), :method => :delete, :data => { :confirm => 'Weet je het zeker?' }, class: "button small alert"
+    -else
+      Nog geen projecten! Klik
+      =link_to " hier ", new_dashboard_college_year_project_path(@college_year)
+      om een project toe te voegen.

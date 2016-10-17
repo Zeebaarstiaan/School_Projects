@@ -1,0 +1,16 @@
+<% provide(:title, 'Vakken') %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag("nav_icons/over-ons.png", alt: "Vakken") %><h1>Vakken</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span10 offset1">
+        <ul class="course-list">
+          <%= render @courses %>
+        </ul>
+
+        <%= will_paginate @courses%>
+    </div>
+</div>

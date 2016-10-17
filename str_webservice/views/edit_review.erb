@@ -1,0 +1,26 @@
+<div class="row">
+	<div class="span6 offset3">
+    	<form action="/movies/<%= @movie.id %>/reviews/<%= @review.id %>" method="post" class="well">
+    		<input type="hidden" name="_method" value="put">  
+    		<fieldset>
+    			<legend>Edit review for: <em><%= @movie.title %></em></legend>
+				<label>The movie was:</label>
+				<select name="rating" placeholder="The Shawshank Redemption" class="span5">
+					<option <%= "selected" if @review.rating %> value="1">AWESOME</option>
+					<option <%= "selected" if !@review.rating %> value="0">meh...</option>
+				</select>
+
+	        	<label>Comment:</label>
+	          	<textarea name="comment" class="span5"><%=h @review.comment %></textarea>
+
+				<button class="btn btn-primary btn-large span3" type="submit">Edit Review</button>
+        		<a href="/movies/<%= @movie.id %>/reviews/<%= @review.id %>/delete" class="btn btn-danger btn-large span2">Delete Review</a>
+      	 </fieldset>
+      	</form>   
+    </div>
+</div>
+	<div class="row">
+	<div class="span12 back">
+		<a href="/movies/<%= @movie.id %>/reviews" class="btn btn-info">Back to review-list</a>
+	</div>
+</div>

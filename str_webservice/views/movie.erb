@@ -1,0 +1,19 @@
+<div class="row">
+   <div class="span6 offset3 well">
+    <h2>  
+      <%=h @movie.title %> <span class="edit"><a href="/movies/<%= @movie.id %>/edit">[edit]</a></span>  
+    </h2>
+    <ul class="info">
+      <li><strong>Release year:</strong><br> <%=h @movie.released %></li>
+      <li><strong>Description:</strong><br> <%=h @movie.description %></li>
+    </ul>
+    <p><a href="/movies/<%= @movie.id %>/reviews">Reviews (<%= @movie.reviews.count %>)</a></p>   
+    <p class="meta">Created: <%= @movie.created_at %> | Updated: <%= @movie.updated_at %></p>  
+   </div>
+ </div>  
+</div>
+  <div class="row">
+  <div class="span12 back">
+    <a href="/movies" class="btn btn-info">Back to movie-list</a>
+  </div>
+</div>

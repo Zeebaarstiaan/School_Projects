@@ -1,0 +1,10 @@
+.row
+  .large-12
+    %h2
+      = "Nieuwe sticker voor: "
+      %br/
+      =@project.title
+
+    = render 'form'
+
+    = link_to 'Terug', dashboard_project_stickers_path(@project)

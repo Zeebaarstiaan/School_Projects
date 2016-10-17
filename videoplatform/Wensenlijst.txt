@@ -1,0 +1,20 @@
+WENSENLIJST:
+
+- help
+- plaatjes
+- icoontje voor vakken
+
+
+TO DO:
+- titels admin menu
+- vak icoontjes op home
+- opmaak geschiedenis
+- opmaak profiel
+- admin paneel
+- help videopagina
+- home pagina opmaak
+- opmaak lijsten
+- opmaak kids home
+- klassen
+- leerlingen in klassen stoppen
+

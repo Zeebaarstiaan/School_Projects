@@ -1,0 +1,15 @@
+<% provide(:title, @course.name) %>
+<div class="row">
+    <div class="span12 _head clearfix">
+        <%= image_tag(@course.image_url, alt: @course.name) %><h1>Video's voor: <%= @course.name %></h1>
+    </div>
+</div>
+<div class="row">
+    <div class="span10 offset1">
+        <ul class="video-list">
+          <%= render :partial => 'videos/video', :collection => @videos %>
+        </ul>
+
+        <%= will_paginate @videos %>
+    </div>
+</div>

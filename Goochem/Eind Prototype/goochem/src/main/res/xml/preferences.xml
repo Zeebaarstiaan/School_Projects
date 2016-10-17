@@ -1,0 +1,60 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="CurrentUser">
+
+    <PreferenceCategory
+        android:title="General">
+
+        <ListPreference
+            android:key="proximity_radius"
+            android:title="Zoekradius"
+            android:summary="De straal waarin naar gebruikers wordt gezocht."
+            android:dialogTitle="Zoekradius"
+            android:entries="@array/radius_modes"
+            android:entryValues="@array/radius_values"
+            android:defaultValue="800" />
+
+        <CheckBoxPreference
+            android:key="show_notification_preference"
+            android:title="Toon Notificatie"
+            android:summary="Laat notificatie-icoon zien voor service.\n(Herstart nodig)"
+            android:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Location">
+
+        <ListPreference
+            android:key="location_preference"
+            android:title="Locatiebepaling"
+            android:summary="Modus voor locatiebepaling."
+            android:dialogTitle="Locatie modus"
+            android:entries="@array/location_modes"
+            android:entryValues="@array/location_values"
+            android:defaultValue="auto" />
+
+        <ListPreference
+            android:key="location_interval_preference"
+            android:title="Update locatie interval"
+            android:summary="Updateinterval voor locatiebepaling."
+            android:dialogTitle="Update Interval"
+            android:entries="@array/interval_modes"
+            android:entryValues="@array/interval_values"
+            android:defaultValue="6000" />
+
+    </PreferenceCategory>
+    <!--<PreferenceCategory-->
+        <!--android:title="Server">-->
+
+        <!--<ListPreference-->
+            <!--android:key="server_interval_preference"-->
+            <!--android:title="Update server interval"-->
+            <!--android:summary="Updateinterval voor versturen van gegevens."-->
+            <!--android:dialogTitle="Update Interval"-->
+            <!--android:entries="@array/interval_modes"-->
+            <!--android:entryValues="@array/interval_values"-->
+            <!--android:defaultValue="6000" />-->
+
+    <!--</PreferenceCategory>-->
+</PreferenceScreen>

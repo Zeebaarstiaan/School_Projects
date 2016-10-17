@@ -1,0 +1,38 @@
+= form_for [:dashboard, @group, @picture], :html => { :multipart => true, :id => "fileupload", :data => {:group_id => @group.id}  }, :remote => true do |f|
+  .row
+    .large-12.columns
+      .fileupload-buttonbar
+        %p
+          Sleep hier afbeeldingen naartoe, of gebruik de onderstaande knop om afbeeldingen te uploaden.
+        %span.button.small.btn-primary.fileinput-button
+          %i.icon-plus
+          %span
+            Afbeeldingen selecteren om te uploaden...
+          = f.file_field :image, :multiple => true
+        =link_to destroy_pictures_dashboard_group_path(@group), class:" button small btn-primary right", remote: true, confirm: "Weet je het zeker?" do
+          %i.icon-trash
+          %span
+            Alles verwijderen
+  .row
+    .large-12.columns
+      .progress.hide
+        %span.meter
+
+  .row
+    .large-12.columns
+      %ul.thumbnails.files
+        - unless @pictures.empty?
+          - @pictures.each do |pic|
+            -unless pic.id.nil?
+              %li.th{:id => "picture_#{pic.id}"}
+                .thumbnail
+                  %a{:href => pic.image.url, :rel => "lightbox[pictures]", :title => pic.description}
+                    %img{:alt => "", :src => pic.image.thumb.url}/
+                  .caption
+                    %p
+                      =link_to edit_dashboard_group_picture_path(@group.id, pic) do
+                        %i.icon-edit
+                        Bewerk
+                      = link_to dashboard_group_picture_path(@group.id, pic), :method => :delete, :data => { :confirm => 'Weet je het zeker?' }, remote: true do
+                        %i.icon-trash
+                        Verwijder

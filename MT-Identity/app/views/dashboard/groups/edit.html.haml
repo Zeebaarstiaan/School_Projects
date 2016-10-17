@@ -1,0 +1,25 @@
+.row
+  .large-12.column
+    %h2 #{@group.title} bewerken
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Teams", dashboard_groups_path
+      %li=link_to @group.title, dashboard_group_path(@group)
+      %li.current=link_to "Bewerk team", edit_dashboard_group_path(@group)
+
+.row
+  .large-12.columns
+    .section-container.auto{"data-section" => ""}
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel1"} Gegevens
+        .content{"data-section-content" => ""}
+          = render 'form'
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel2"} Afbeeldingen
+        .content{"data-section-content" => ""}
+          = render 'uploads'
