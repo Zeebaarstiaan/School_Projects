@@ -1,0 +1,12 @@
+= simple_form_for [:dashboard, @college_year] do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :start_year, required: true, label: 'Collegejaar', collection: cohort_select, prompt: "Selecteer een collegejaar", selected: @college_year.start_year.present? ? @college_year.start_year.year : Date.today.year
+  .form-actions
+    - if params[:action] == "edit"
+      = f.button :submit, "collegejaar bijwerken"
+      =link_to "Projecten", dashboard_college_year_projects_path(@college_year), class: "button info"
+    - else
+      = f.button :submit, "Collegejaar aanmaken"
+    =link_to "Annuleren", :back, class: "button secondary"

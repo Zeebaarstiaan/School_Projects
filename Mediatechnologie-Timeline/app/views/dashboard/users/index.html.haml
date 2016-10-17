@@ -1,0 +1,64 @@
+.row
+  .large-12.columns
+    %h2
+      Gebruikers
+      =link_to new_dashboard_user_path, class: "btn-primary" do
+        %i.icon-plus
+        Nieuwe gebruiker toevoegen
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li.current=link_to "Gebruikers", dashboard_users_path
+
+    %table#users_index.display
+      %thead
+        %tr
+          %th Afbeelding
+          %th Voornaam
+          %th Achternaam
+          %th E-mailadres
+          %th
+          %th
+          %th
+      %tbody
+        - @users.each do |user|
+          %tr
+            - if user.avatar?
+              /%td= cl_image_tag(user.avatar.path, { size: '50x50', crop: :fit})
+              %td= image_tag(user.avatar.profile.url, :width => '50', :height => '50', class: 'avatar_overview')
+            -else
+              %td= image_tag("default_user.png", :width => '50', :height => '50')
+            %td= user.first_name
+            %td= user.last_name
+            %td= user.email
+            %td= link_to 'Bekijken', user
+            %td= link_to 'Aanpassen', edit_dashboard_user_path(user)
+            %td= link_to 'Verwijderen', dashboard_user_path(user), :method => :delete, :data => { :confirm => 'Wilt u deze gebruiker verwijderen?' }
+
+:javascript
+    $('#users_index').dataTable({
+      sPaginationType: "full_numbers",
+      bJQueryUI: true,
+      oLanguage: {
+        "sProcessing": "Bezig...",
+        "sLengthMenu": "_MENU_ resultaten weergeven",
+        "sZeroRecords": "Geen resultaten gevonden",
+        "sInfo": "_START_ tot _END_ van _TOTAL_ resultaten",
+        "sInfoEmpty": "Geen resultaten om weer te geven",
+        "sInfoFiltered": " (gefilterd uit _MAX_ resultaten)",
+        "sInfoPostFix": "",
+        "sSearch": "Zoeken:",
+        "sEmptyTable": "Geen resultaten aanwezig in de tabel",
+        "sInfoThousands": ".",
+        "sLoadingRecords": "Een moment geduld aub - bezig met laden...",
+        "oPaginate": {
+            "sFirst": "Eerste",
+            "sLast": "Laatste",
+            "sNext": "Volgende",
+            "sPrevious": "Vorige"
+        }
+    }
+  });

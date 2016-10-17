@@ -1,0 +1,40 @@
+= simple_form_for [:dashboard, @project] do |f|
+  = f.error_notification
+  %fieldset
+    %legend Project
+    .row
+      .large-12.columns
+        =f.input :title, required: true, label: 'Titel', placeholder: 'Minor Game Development'
+    .row
+      .large-12.columns
+        =f.input :description, required: true, label: 'Beschrijving', placeholder: 'Korte Inleiding'
+    .row
+      .large-6.columns
+        =f.input :school_year, required: true, label: 'Schooljaar', collection: school_year_options, prompt: "Selecteer een schooljaar"
+    .row
+      .large-12.columns
+        =f.association :college_years, collection: @college_years, label_method: :years, value_method: :id, required: true, label: "Collegejaren", input_html: {class: "select2-input"}
+    .row
+      .large-12.columns
+        = f.label :preview, "Preview (voor timeline)"
+        %p Upload een leuke preview van het project van redelijke grote (geen logo)
+        - if @project.preview?
+          =image_tag @project.preview.banner.url
+          %br
+          %label
+            = f.check_box :remove_preview
+            Huidige preview verwijderen
+        = f.file_field :preview
+  .row
+    .large-12.columns
+      - if params[:action] == "edit"
+        =f.button :submit, "Project opslaan"
+      - else
+        =f.button :submit, "Project aanmaken"
+      =link_to "Annuleren", :back, class: "button secondary"
+
+
+
+
+
+

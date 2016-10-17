@@ -1,0 +1,149 @@
+// Document Ready
+$(document).ready(function(){
+
+    $(".hr-info").hide();
+    $(".hr").hover(function(){
+    $(".hr-info", this).stop().animate({
+        width: "toggle",
+        opacity: 'toggle'
+    },500, "easeInOutSine")
+    });
+
+    $("#login").hover(function(){
+        $('#login i').toggleClass('icon-unlock', 10)
+    })
+
+    $(".select2-input").select2();
+
+    $(".user-info").hide();
+    $(".user").hover(function(){
+       $(".user-info", this).stop().animate({
+            width: "toggle",
+            opacity: 'toggle'
+        },500, "easeInOutSine")
+    });
+
+    if ($(".info-description").length > 0){
+      $(".info-description").dotdotdot({
+        watch: "window"
+      });
+    }
+
+    if ($(".timeline .project h2").length > 0){
+      $(".timeline .project h2").dotdotdot({
+        watch: "window"
+      });
+    }
+
+    if ($(".box-description").length > 0){
+      $(".box-description").dotdotdot({
+        watch: true
+      });
+    }
+
+  $(".nested-list").hover(function(){
+    var contentHeight = 10;
+    $(this).children().each(function() {
+        contentHeight += $(this).height();
+    });
+    $(this).stop().animate({
+        height: contentHeight >= 100 ? contentHeight : 100
+    }, 300);
+  },
+  function() {
+    $(this).stop().animate({
+      height: '100px'
+      }, 'fast'
+    );
+  });
+
+  $(".card-nested-list").hover(function(){
+    var contentHeight = 10;
+    $(this).children().each(function() {
+        contentHeight += $(this).height();
+    });
+    $(this).stop().animate({
+        height: contentHeight >= 120 ? contentHeight : 120
+    }, 300);
+  },
+  function() {
+    $(this).stop().animate({
+      height: '120px'
+      }, 'fast'
+    );
+  });
+
+
+
+    $('.gridster a').smoothScroll({
+        offset: -50
+        // easing: 'easeOutExpo',
+        // speed: 3000
+    });
+
+    $('#fileupload').fileupload({
+        progressInterval: 10,
+        autoUpload: true,
+        progressall: function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $('.progress').removeClass('hide');
+            $('.progress .meter').css('width', progress + '%');
+            $('.progress .meter').text(progress + '%');
+        },
+        filesContainer: $('ul.thumbnails.files'),
+        uploadTemplateId: null,
+        downloadTemplateId: null,
+        uploadTemplate: function (o) {
+            var rows = $();
+            $.each(o.files, function (index, file) {
+                var row = $('<li>' +
+                    '<div class="thumbnail">' +
+                        '<img src="<%= asset_path('lightbox/loading.gif') %>" alt="">'+
+                    '</div></li>');
+                if (!file.error) {
+                    rows = rows.add(row);
+                }
+            });
+            return rows;
+        },
+        downloadTemplate: function (o) {
+            var rows = $();
+            $.each(o.files, function (index, file) {
+                if (!file.error) {
+                    var row = $('<li class="th" id="picture_' + file.picture_id + '">' +
+                              '<div class="thumbnail">' +
+                                '<a href="' + file.url +'" rel="lightbox[pictures]" class="picture_' + file.id + '">' +
+                                  '<img src="" alt="">' +
+                                '</a>' +
+                                '<div class="caption">' +
+                                  '<p>' +
+                                    '<a href="" class="btn btn-mini btn-show" style="margin-right: 4px;">' +
+                                      '<i class="icon-edit "></i>' +
+                                      'Bewerk' +
+                                    '</a>' +
+                                    '<a class="btn btn-mini btn-delete" data-confirm="Weet je het zeker?" data-remote=true data-method="delete" href="" >' +
+                                      '<i class="icon-trash"></i>' +
+                                      'Verwijder' +
+                                    '</a>' +
+                                  '</p>' +
+                                '</div>' +
+                              '</div><li>');
+                }
+                if (!file.error) {
+                    if (file.thumbnail_url) {
+                        row.find('img').prop('src', file.thumbnail_url);
+                    }
+                    row.find('.btn-delete')
+                        .attr('href', '/dashboard/groups/' + $("#fileupload").data('groupId') + '/pictures/' + file.picture_id);
+                    row.find('.btn-show')
+                        .attr('href', '/dashboard/groups/' + $("#fileupload").data('groupId') + '/pictures/' + file.picture_id + '/edit');
+                    rows = rows.add(row);
+                }
+
+            });
+            return rows;
+        },
+    });
+});
+
+

@@ -1,0 +1,20 @@
+$("#overlay_content").html("<%= escape_javascript(render "show", :formats => [:html]) %>");
+$('#overlay_modal').foundation('reveal', 'open');
+var timer = setInterval(function(){
+   if ($(".debug").length) {
+        $('.timeline').masonry({
+          itemSelector : '.project',
+          columnWidth: 425,
+          isAnimated: true,
+          gutterWidth: 70,
+          animationOptions: {
+            duration: 400,
+            easing: 'linear',
+            queue: true
+          }
+        });
+       $('.timeline').masonry('reload');
+       $(".box-description").dotdotdot();
+       clearInterval(timer);
+   }
+}, 200);

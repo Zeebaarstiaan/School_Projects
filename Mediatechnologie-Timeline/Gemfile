@@ -1,0 +1,45 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.13'
+
+gem 'htmlentities'
+gem 'annotate'
+gem 'devise'
+gem 'haml-rails'
+gem 'json'
+gem 'ckeditor_rails'
+gem 'date_validator'
+gem 'ffaker'
+gem 'simple_form'
+gem 'nested_form'
+gem "rmagick"
+gem 'carrierwave'
+
+group :development do
+  gem 'sqlite3'
+  gem "better_errors", ">= 0.7.2"
+  gem 'rails-footnotes', '>= 3.7.9'
+  gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano'
+  gem 'binding_of_caller'
+end
+
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem 'jquery-ui-rails'
+  gem "select2-rails"
+  gem 'zurb-foundation', '~> 4.0.0'
+  gem "font-awesome-rails"
+  gem 'turbo-sprockets-rails3'
+  gem "jquery-fileupload-rails"
+  gem "select2-rails"
+  gem 'jquery-datatables-rails'
+end
+
+group :production do
+  gem 'mysql2'
+end

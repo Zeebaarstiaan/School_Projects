@@ -1,0 +1,14 @@
+= simple_form_for [:dashboard, @group, @picture] do |f|
+  .row
+    .large-12.columns
+      = image_tag @picture.image.large.url, :id => 'cropbox'
+      - %w[x y w h].each do |attribute|
+        = f.hidden_field "crop_#{attribute}"
+  .row
+    .large-12.columns
+      %br
+      = f.input :description, required: false, label: "Beschrijving"
+  .row
+    .large-12.columns
+      = f.submit "Afbeelding opslaan", :class => 'button medium'
+      = link_to "Annuleren", edit_dashboard_group_path(@group), :class => 'button medium secondary'

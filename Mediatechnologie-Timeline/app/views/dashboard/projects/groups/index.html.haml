@@ -1,0 +1,62 @@
+.row
+  .large-12.column
+    %h2
+      #{@college_year.years} / #{@project.title} : Teams
+      =link_to new_dashboard_college_year_project_group_path(@college_year, @project), class: "btn-primary" do
+        %i.icon-plus
+        Nieuw team toevoegen
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li=link_to @college_year.years, dashboard_college_year_path(@college_year)
+      %li=link_to "Projecten", dashboard_college_year_projects_path(@college_year)
+      %li=link_to @project.title, dashboard_college_year_project_path(@college_year, @project)
+      %li.current=link_to "Teams", dashboard_college_year_project_groups_path(@college_year, @project)
+
+/ .row
+/   .large-12.column
+/     %ul.navbar
+/       %li
+/         %a.active{href: "#"} Actief
+/       %li
+/         %a{href: "#"} Verborgen
+
+.row
+  .large-12.columns
+    - if @groups.present?
+      -@groups.each do |group|
+        .row.card-info-row
+          .large-2.column
+            - if group.pictures.any?
+              =image_tag group.pictures.first.image.thumb.url
+            - else
+              =image_tag "thumb_default_preview.jpg"
+          .large-7.columns.info-description
+            %h3 #{group.title}
+            %p
+              %strong Collegejaar
+              = group.college_year.years unless group.college_year.nil?
+              %strong Project
+              = group.project.title unless group.project.nil?
+            %p= group.description
+          .large-3.columns.card-nested-list
+            %ul
+              - if group.users.any?
+                - group.users.limit(5).each do |user|
+                  %li=link_to user.name, dashboard_user_path(user)
+              - else
+                %li Nog geen gebruikers
+        .row.buttons-row
+          .large-12.columns
+            %ul
+              %li= link_to 'Bekijk', dashboard_college_year_project_group_path(@college_year, @project, group), class: "button small"
+              %li= link_to 'Bewerk', edit_dashboard_college_year_project_group_path(@college_year, @project, group), class: "button small"
+              %li= link_to 'Verwijder', dashboard_college_year_project_group_path(@college_year, @project, group), :method => :delete, :data => { :confirm => 'Weet je het zeker?' }, class: "button small alert"
+    -else
+      Nog geen teams! Klik
+      =link_to " hier ", new_dashboard_college_year_project_group_path
+      om een team toe te voegen.

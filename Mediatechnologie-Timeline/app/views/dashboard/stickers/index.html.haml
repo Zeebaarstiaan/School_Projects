@@ -1,0 +1,24 @@
+.row
+  .large-12.columns
+    %h2 Project Stickers
+
+    -if @stickers.present?
+      %table
+        %tr
+          %th Titel
+          %th Sticker
+          %th
+          %th
+          %th
+
+        - @projects.each do |project|
+          %tr
+            %td= project.title
+            %td
+            -if project.sticker.present?
+              %td=project.sticker.title
+              %td= link_to 'Bekijk', dashboard_project_sticker_path(project, project.sticker)
+              %td= link_to 'Bewerk', edit_dashboard_project_sticker_path(project, project.sticker)
+              %td= link_to 'Verwijder', dashboard_project_sticker_path(project, project.sticker), :method => :delete, :data => { :confirm => 'Are you sure?' }
+            -else
+              %td=link_to "Nieuwe sticker", new_dashboard_project_sticker_path(project)

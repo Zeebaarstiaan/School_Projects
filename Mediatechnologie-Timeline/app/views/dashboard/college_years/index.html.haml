@@ -1,0 +1,39 @@
+.row
+  .large-12.columns
+    %h2
+      Collegejaren
+      =link_to new_dashboard_college_year_path, class: "btn-primary" do
+        %i.icon-plus
+        Nieuw collegejaar toevoegen
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li.current=link_to "Collegejaren", dashboard_college_years_path
+
+.row
+  .large-12.columns
+    - if @college_years.present?
+      -@college_years.each do |college_year|
+        .row.info-row
+          .large-9.columns.info-description
+            %h3 #{college_year.years}
+          .large-3.columns.nested-list
+            %ul
+              - if college_year.projects.any?
+                - college_year.projects.order("id desc").limit(5).each do |project|
+                  %li=link_to project.title, dashboard_college_year_project_path(college_year, project)
+              - else
+                %li Nog geen projecten
+        .row.buttons-row
+          .large-12.columns
+            %ul
+              %li= link_to 'Projecten', dashboard_college_year_projects_path(college_year), class: "button small info"
+              %li= link_to "Bekijk", dashboard_college_year_path(college_year), class: "button small"
+              %li= link_to 'Bewerk', edit_dashboard_college_year_path(college_year), class: "button small"
+              %li= link_to 'Verwijder', dashboard_college_year_path(college_year), :method => :delete, :data => { :confirm => 'Weet je het zeker?' }, class: "button small alert"
+    -else
+      Nog geen collegejaren! Klik
+      =link_to " hier ", new_dashboard_college_year_path
+      om een collegejaar toe te voegen.

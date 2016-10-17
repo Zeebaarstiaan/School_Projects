@@ -1,0 +1,14 @@
+.row
+  .large-12.columns
+    %h2 #{@project.title} bewerken
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Projecten", dashboard_projects_path
+      %li.unavailable=link_to @project.title, "#"
+      %li.current=link_to "Bewerk project", edit_dashboard_project_path(@project)
+.row
+  .large-12.column
+    = render 'form'

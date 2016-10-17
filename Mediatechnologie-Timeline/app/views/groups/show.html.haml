@@ -1,0 +1,34 @@
+.row.card-detail
+  .large-12.columns
+    %h2
+      #{@group.title}
+      - if user_signed_in? && current_user.owner?(@group)
+        =link_to edit_dashboard_group_path(@group), class: "btn-primary" do
+          %i.icon-edit
+          Bewerk team
+
+.row
+  .large-12.columns
+    %p=strip_tags @group.description
+
+.full_width_gray
+  .row.card-detail
+    .large-12.columns
+      %h4 Studenten die aan dit project werkten:
+      %ul#users
+        -@group.users.each_with_index do |user, index|
+          -if index % 5 == 0
+            %br
+          =render :partial => "user", :locals => { :user => user }
+
+.row.card-detail
+  .large-12.columns
+    .content=@group.content.html_safe
+
+.row
+  .large-12.columns
+    %ul.large-block-grid-8.image-overview
+      -@group.pictures.each do |pic|
+        %li
+          %a{href: "#{pic.image.url}", rel: "lightbox[pictures]"}
+            = image_tag(pic.image.thumb.url)

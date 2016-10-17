@@ -1,0 +1,31 @@
+.row
+  .large-12.columns
+    %h2
+      #{@college_year.years} / #{@project.title} / #{@group.title}
+
+.row
+  .large-12.columns
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li=link_to "Collegejaren", dashboard_college_years_path
+      %li=link_to @college_year.years, dashboard_college_year_path(@college_year)
+      %li=link_to "Projecten", dashboard_college_year_projects_path(@college_year)
+      %li=link_to @project.title, dashboard_college_year_project_path(@college_year, @project)
+      %li=link_to "Teams", dashboard_college_year_project_groups_path(@college_year, @project)
+      %li=link_to @group.title, dashboard_college_year_project_group_path(@college_year, @project, @group)
+      %li.current=link_to "Bewerk team", edit_dashboard_college_year_project_group_path(@college_year, @project, @group)
+
+.row
+  .large-12.columns
+    .section-container.auto{"data-section" => ""}
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel1"} Gegevens
+        .content{"data-section-content" => ""}
+          = render 'form'
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel2"} Afbeeldingen
+        .content{"data-section-content" => ""}
+          = render 'uploads'

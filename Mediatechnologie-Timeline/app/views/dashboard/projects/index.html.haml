@@ -1,0 +1,49 @@
+.row
+  .large-12.column
+    %h2
+      Projecten
+      =link_to new_dashboard_project_path, class: "btn-primary" do
+        %i.icon-plus
+        Nieuw project toevoegen
+.row
+  .large-12.column
+    %ul.breadcrumbs
+      %li=link_to "Home", root_path
+      %li=link_to "Dashboard", dashboard_dashboard_path
+      %li.current=link_to "Projecten", dashboard_projects_path
+.row
+  .large-12.column
+    %p Laat projecten zien van jaar:
+    %ul.button-group
+      - @college_years.each do |college_year|
+        %li=link_to college_year.years, dashboard_college_year_projects_path(college_year), class: "small button"
+
+    %hr/
+.row
+  .large-12.column
+    - if @projects.present?
+      -@projects.each do |project|
+        .row.info-row
+          .large-2.column
+            = image_tag project.preview.thumb.url
+          .large-7.columns.info-description
+            %h3= project.title
+            %p= project.description
+          .large-3.columns.nested-list
+            %ul
+              - if project.groups.any?
+                - project.groups.order("id desc").limit(5).each do |group|
+                  %li=link_to group.title, dashboard_college_year_project_group_path(group.college_year, project, group)
+              - else
+                %li Nog geen teams...
+
+        .row.buttons-row
+          .large-12.columns
+            %ul
+              %li= link_to "Bekijk", dashboard_project_path(project), class: "button small"
+              %li= link_to 'Bewerk', edit_dashboard_project_path(project), class: "button small"
+              %li= link_to 'Verwijder', dashboard_project_path(project), :method => :delete, :data => { :confirm => 'Weet je het zeker?' }, class: "button small alert"
+    -else
+      Nog geen projecten! Klik
+      =link_to " hier ", new_dashboard_project_path
+      om een project toe te voegen.

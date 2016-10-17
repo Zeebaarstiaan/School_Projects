@@ -1,0 +1,22 @@
+.row
+  .small-6.small-centered.columns
+    %h2 Registreren
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :student_number, :required => true, :autofocus => true, label: "Studentnummer"
+        = f.input :email, :required => true, input_html: {id: "user_email_field"}, label: "E-mail"
+        = f.input :first_name,  :required => true, label: "Voornaam"
+        = f.input :last_name,  :required => true, label: "Achternaam"
+        =f.input :starting_year, required: true, label: 'Beginjaar', as: :date, start_year: Date.today.year - 5, end_year: Date.today.year + 3, discard_day: true, discard_month: true,  order: [:year], prompt: "Selecteer een beginjaar"
+        = f.input :password, :required => true, label: "Wachtwoord"
+        = f.input :password_confirmation, :required => true, label: "Wachtwoord herhalen"
+      .form-actions
+        = f.button :submit, "Registreren"
+    = render "devise/shared/links"
+
+:javascript
+  $("#user_student_number").numeric();
+  $("#user_student_number").keyup(function(){
+    $("#user_email_field").val(this.value + "@hr.nl");
+  });
